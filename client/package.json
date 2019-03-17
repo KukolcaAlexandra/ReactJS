@@ -4,8 +4,9 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack --mode production"
+    "test": "jest",
+    "build": "webpack --mode production --rogress",
+    "dev": " webpack-dev-server --mode development --progress"
   },
   "author": "",
   "license": "ISC",
@@ -16,9 +17,17 @@
     "babel-loader": "^8.0.5",
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
+    "jest": "^24.5.0",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
     "webpack": "^4.29.6",
-    "webpack-cli": "^3.2.3"
+    "webpack-cli": "^3.3.0",
+    "webpack-dev-server": "^3.2.1"
+  },
+  "dependencies": {
+    "extract-text-webpack-plugin": "4.0.0-beta.0",
+    "react-redux": "^6.0.1",
+    "react-router": "^4.4.0",
+    "redux": "^4.0.1"
   }
 }
