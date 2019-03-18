@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "test": "jest",
-    "build": "webpack --mode production --rogress",
+    "build": "webpack --mode production --progress",
     "dev": " webpack-dev-server --mode development --progress"
   },
   "author": "",
@@ -20,6 +20,7 @@
     "jest": "^24.5.0",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
+    "uglifyjs-webpack-plugin": "^2.1.2",
     "webpack": "^4.29.6",
     "webpack-cli": "^3.3.0",
     "webpack-dev-server": "^3.2.1"

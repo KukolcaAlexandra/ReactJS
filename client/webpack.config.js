@@ -1,17 +1,12 @@
 const path = require('path');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = (env, options) => {
   
-  // Use env.<YOUR VARIABLE> here:
-  //console.log('NODE_ENV: ', env.NODE_ENV); // 'local'
-  //console.log('Production: ', env.production); // true
-  //const env_mode = env.production ? 'production' : 'development';
-  //console.log(env);
-  //console.log(options);
   const isProduction = options.mode === 'production';
-  console.log(isProduction);
+  
   return {
     entry: './src/app.js',
 
@@ -33,7 +28,7 @@ module.exports = (env, options) => {
         {
           test: /\.css$/,
           use: ExtractTextPlugin.extract({
-            fallback: "style-loader",
+            fallback: 'style-loader',
             use: 'css-loader'
           })
         },
@@ -62,5 +57,14 @@ module.exports = (env, options) => {
       }),
       new ExtractTextPlugin('[name].css')
     ],
+
+    optimization: isProduction ? {
+      minimizer: [
+        new UglifyJsPlugin({
+          test: /\.js(\?.*)?$/i,
+        }),
+      ],
+    } : {},
+
   };
 };
