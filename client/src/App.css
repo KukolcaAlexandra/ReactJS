@@ -1,0 +1,12 @@
+.app {
+  text-align: center;
+  background: #222;
+}
+
+.button {
+  color: #909090;
+    background-color: #202020;
+    padding: 12px;
+    border-radius: 2px;
+    width: 100px;
+  }
