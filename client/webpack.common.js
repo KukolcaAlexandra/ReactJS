@@ -2,7 +2,7 @@ const path = require('path');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
-const autoprefixer = require('autoprefixer');
+//const autoprefixer = require('autoprefixer');
 
 /*const CSSModuleLoader = {
   loader: 'css-loader',
