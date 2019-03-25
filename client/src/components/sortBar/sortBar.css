@@ -1,4 +1,17 @@
 .sortBar {
   height: 30px;
   background-color: lightgray;
+  display: flex;
+}
+
+.item {
+  margin: 5px 30px;
+}
+
+.item:first-child {
+  margin-right: auto;
+}
+
+.selected {
+  font-weight: 700;
 }

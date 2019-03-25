@@ -1,11 +1,14 @@
 import React from 'react';
 import Header from '../components/header/header.component';
 import createFooter from '../components/footer/footer.component';
-import Main from '../components/main/main.component';
+import MainContent from '../components/mainContent/mainContent.component';
 //import styles from './mainPage';
 import styles from './mainPage.css';
 import { title, genre, releaseDate, rating } from '../consts';
 import movies from '../mock-data';
+import createSortBar from '../components/sortBar/sortBar.component';
+import { filterByTitle, filterByGenre, sortByDate, sortByRating } from '../utils/filterMethods';
+
 
 class MainPage extends React.Component {
   constructor(props) {
@@ -14,6 +17,7 @@ class MainPage extends React.Component {
     this.onInputChangeHandler = this.onInputChangeHandler.bind(this);
     this.onClickSearchButton = this.onClickSearchButton.bind(this);
     this.onClickFilterButton = this.onClickFilterButton.bind(this);
+    this.onChangeSortBy = this.onChangeSortBy.bind(this);
     this.state = {
       searchInput: '',
       searchBy: title,
@@ -24,9 +28,13 @@ class MainPage extends React.Component {
   }
   
   onClickSearchButton() {
-    console.log('onClickSearchButton');
-    console.log(this.searchValue);
-    console.log(movies);
+    const filterFunction = this.state.searchBy === title ? filterByTitle : filterByGenre;
+    const foundMovies = movies.data.filter((movie) => filterFunction(movie, this.searchValue));
+
+    this.setState({
+      searchResult: foundMovies.length > 0 ? foundMovies.sort(sortByDate) : foundMovies,
+      searchInput: this.searchValue
+    }); 
   }
 
   onClickFilterButton(event) {
@@ -34,15 +42,34 @@ class MainPage extends React.Component {
     console.log(event.target.value);
     this.setState({ searchBy: event.target.value});
   }
+
   onClickEnterButton(event) {
-    console.log('onClickEnterButton');
-    console.log(event.keyCode);
+    if (event.keyCode === 13) {
+      this.onClickSearchButton();
+    }
   }
 
   onInputChangeHandler(event) {
     console.log('onInputChangeHandler');
     console.log(event.target.value);
     this.searchValue = event.target.value;
+  }
+
+  onChangeSortBy(event) {
+    let sortedResult;
+    let sortBy;
+    if (event.target.innerText.toLowerCase() === releaseDate.toLowerCase()) {
+      sortedResult = this.state.searchResult.sort(sortByDate);
+      sortBy = releaseDate;
+    } else if (event.target.innerText.toLowerCase() === rating.toLowerCase()) {
+      sortedResult = this.state.searchResult.sort(sortByRating);
+      sortBy = rating;
+    }
+
+    this.setState({ 
+      sortBy,
+      searchResult: sortedResult
+    });
   }
 
   render() {
@@ -55,7 +82,8 @@ class MainPage extends React.Component {
           onInputChangeHandler={this.onInputChangeHandler}
           searchBy = {this.state.searchBy}
         />
-        <Main/>
+        {createSortBar(this.state.searchResult.length, this.state.sortBy, this.onChangeSortBy)}
+        <MainContent data={this.state.searchResult}/>
         {createFooter()}
       </div>
     );

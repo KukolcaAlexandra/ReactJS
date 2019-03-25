@@ -1,0 +1,15 @@
+.container {
+  margin: 10px 10px;
+}
+
+.image {
+  width: 300px;
+}
+
+.genre {
+  font-size: 12px;
+}
+
+.container:last-child {
+  margin-right: auto;
+}
