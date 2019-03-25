@@ -201,3 +201,5 @@ const movies = {
   "offset": 0,
   "limit": 10
 }
+
+export default movies;

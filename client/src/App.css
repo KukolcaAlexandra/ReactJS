@@ -9,11 +9,23 @@ html {
 }
 
 body {
-  font: 16px Arial; 
   height: 100%;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-.app {
+/*.app {
   min-height: 100%;
-}
+  display: flex;
+  background-color: green;
+}*/
+/*
+#root {
+  display: flex;
+  background-color: green;
+}*/
+/*
+.root {
+  background-color: blueviolet;
+  height: 100%;
+}*/
 

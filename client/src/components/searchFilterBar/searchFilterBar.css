@@ -1,9 +1,6 @@
 .filterBar {
   display: flex;
-  padding: 20px;
-}
-
-.filterBar:lastChild {
-  order: 2;
-  color: blueviolet;
+  justify-content: flex-start;
+  align-items: center;
+  padding-top: 10px; 
 }

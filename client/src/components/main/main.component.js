@@ -1,6 +1,6 @@
 import React from 'react';
-import createSearchBar from '../search/search.component';
-import createSearchFilterBar from '../searchFilterBar/searchFilterBar.component';
+//import createSearchFilterBar from '../searchFilterBar/searchFilterBar.component';
+import createSortBar from '../sortBar/sortBar.component';
 import styles from './main.css';
 
 class Main extends React.Component {
@@ -10,9 +10,12 @@ class Main extends React.Component {
 
   render() {
     return (
-      <div className={styles.main}>
-        Main content
-      </div>
+      <>
+        {createSortBar()}
+        <div className={styles.main}>
+          Main content
+        </div>
+      </>
     );
   }
 }

@@ -1,7 +1,7 @@
 .small {
-  background-color: aqua;
+  background-color: grey;
   width: 80px;
-  height: 15px;
+  height: 20px;
 }
 
 .medium {
@@ -9,14 +9,19 @@
   width: 120px;
 }
 
-.big {
-  background-color: blueviolet;
+input.big {
+  background-color: pink;
   width: 150px;
-  height: 25px;
+  height: 30px;
+  margin-left: auto;
 }
 
 .button {
   border-radius: 5px;
   border: none;
   margin-left: 10px;
+}
+
+.pressed {
+  background-color: pink;
 }

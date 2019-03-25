@@ -20,13 +20,14 @@ class Header extends React.Component {
       onInputChangeHandler,
       onClickEnterButton,
       onClickSearchButton,
-      onClickFilterButton
+      onClickFilterButton,
+      searchBy
     } = this.props;
     return (
       <div className={styles.header}>
         <h1>{'find your movie'.toUpperCase()}</h1>
-        {createSearchBar('Search', onInputChangeHandler, onClickEnterButton)}
-        {createSearchFilterBar(onClickSearchButton, onClickFilterButton)}
+        {createSearchBar(onInputChangeHandler, onClickEnterButton)}
+        {createSearchFilterBar(onClickSearchButton, onClickFilterButton, searchBy)}
       </div>
     );
   }

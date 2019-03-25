@@ -1,3 +1,16 @@
-.mainPage {
+.main {
+  min-height: 100%;
+  display: flex;
+  margin-bottom: auto;
+}
+
+.mainContent {
+  height: 700px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
   min-height: 100%;
 }

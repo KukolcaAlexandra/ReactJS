@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import MainPage from './screens/mainPage';
+import Footer from './components/footer/footer.component';
 
 //import styles from './app.scss';
 import styles from './app.css';
@@ -46,14 +47,16 @@ class MainComponent extends React.Component {
   
   render() {
     return (
-      <div className={styles.app}>
-        <MainPage></MainPage>
-      </div>
+      <>
+        <MainPage/>
+      </>
     );
   }
 }
 
 const rootElement = document.getElementById("root");
+//rootElement.className = "root";
+rootElement.style.height = '100%';
 ReactDOM.render(<MainComponent />, rootElement);
 
 /*

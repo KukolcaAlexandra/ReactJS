@@ -3,6 +3,8 @@ import styles from './button.css';
 
 export default function createButton(title, onClickHandler, size='small', pressed=false) {
   let className;
+  let classPressed;
+
   if (size === 'small') {
     className = styles.small;
   } else if (size === 'medium') {
@@ -11,15 +13,19 @@ export default function createButton(title, onClickHandler, size='small', presse
     className = styles.big;
   } 
   
+  if (pressed) {
+    classPressed = styles.pressed;
+  }
+  
   return (
-    <div>
+    <>
       <input
-        className={[className, styles.button].join(' ')}
+        className={[className, styles.button, classPressed].join(' ')}
         type="button"
         name="button"
         value={title}
         onClick={onClickHandler}
       />  
-    </div>
+    </>
   );
 }
