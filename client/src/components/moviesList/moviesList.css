@@ -1,0 +1,23 @@
+.main {
+  margin: auto;
+  min-width: 50px;
+  min-height: 100%;
+  width: 90%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.center {
+  margin: auto;
+  min-width: 50px;
+  min-height: 100%;
+  width: 90%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+p {
+  font-size: 40px;
+}

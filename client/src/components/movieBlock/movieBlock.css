@@ -1,5 +1,10 @@
 .container {
-  margin: 10px 10px;
+  padding: 10px 10px;
+  width: 31%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
 }
 
 .image {
@@ -10,6 +15,8 @@
   font-size: 12px;
 }
 
+/*
 .container:last-child {
   margin-right: auto;
-}
+  margin-left: 4%;
+}*/

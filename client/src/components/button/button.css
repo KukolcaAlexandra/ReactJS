@@ -5,8 +5,9 @@
 }
 
 .medium {
-  background-color: blue;
+  background-color: lightGrey;
   width: 120px;
+  height: 25px;
 }
 
 input.big {

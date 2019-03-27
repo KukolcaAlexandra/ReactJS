@@ -1,18 +1,3 @@
-/*
-const movie = {
-  id: number,
-  title: string, // Movie title
-  tagline: string,
-  vote_average: number,
-  vote_count: number,
-  release_date: string,
-  poster_path: string, // Poster Image
-  overview: string, // Short description
-  budget: number,
-  revenue: number,
-  runtime: number,
-}*/
-
 const movies = {
   "data": [
     {
