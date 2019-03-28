@@ -1,0 +1,47 @@
+.container {
+  padding: 10px 10px;
+  width: 31%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.image {
+  width: 300px;
+}
+
+.genre {
+  font-size: 12px;
+}
+
+.title {
+  margin-right: auto;
+}
+
+.titleBlock {
+  width: 300px;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.year {
+  font-size: 14px;
+  margin-left: 20px;
+  margin-left: auto;
+  padding: 2px 5px;
+  border: 1px solid black;
+}
+
+.genreBlock {
+  width: 300px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.vote {
+  width: 300px;
+  font-size: 14px;
+  font-weight: 600;
+}

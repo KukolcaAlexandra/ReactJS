@@ -1,9 +1,9 @@
 import React from 'react';
-import createButton from '../button/button.component';
-import { title, genre } from '../../consts';
-import styles from './searchFilterBar';
+import createButton from '../../common/button/button.component';
+import { title, genre } from '../../../consts';
+import styles from './searchBar';
 
-export default function createSearchFilterBar(onClickSearchButton, onClickFilterButton, searchBy) {
+export default function createSearchBar(onClickSearchButton, onClickFilterButton, searchBy) {
 
   return (
     <div className={styles.filterBar}>

@@ -1,12 +1,11 @@
 import React from 'react';
 
-export default function createSearchBar(onChangeHandler, onClickHandler, value='') {
+export default function createInput(onChangeHandler, onClickHandler, placeholder='') {
   return (
     <input
       type="text"
       name="input"
-      //value={value}
-      placeholder="Search"
+      placeholder={placeholder}
       onChange={onChangeHandler}
       onKeyDown={onClickHandler}
     />  

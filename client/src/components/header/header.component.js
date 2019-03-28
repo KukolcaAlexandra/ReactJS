@@ -1,8 +1,7 @@
 import React from 'react';
-import createSearchBar from '../search/search.component';
-import createSearchFilterBar from '../searchFilterBar/searchFilterBar.component';
-import styles from './header.css';
-import DescriptionHeader from '../descriptionHeader/descriptionHeader.component';
+import ErrorBoundary from '../common/errorBoundary/errorBoundary.component';
+import createMainHeader from './mainHeader/mainHeader.component';
+import createDescriptionHeader from './descriptionHeader/descriptionHeader.component';
 
 class Header extends React.Component {
   
@@ -16,17 +15,21 @@ class Header extends React.Component {
       onClickFilterButton,
       searchBy
     } = this.props;
-
-    console.log(selectedMovie);
     
     return selectedMovie ? (
-      <DescriptionHeader data={selectedMovie} onClickSearchButton={onBackButton}>SelectedMovie {selectedMovie.id}</DescriptionHeader>
+      <ErrorBoundary>
+        {createDescriptionHeader(selectedMovie, onBackButton)} 
+      </ErrorBoundary>
     ):(
-      <div className={styles.header}>
-        <h1>{'find your movie'.toUpperCase()}</h1>
-        {createSearchBar(onInputChangeHandler, onClickEnterButton)}
-        {createSearchFilterBar(onClickSearchButton, onClickFilterButton, searchBy)}
-      </div>
+      <ErrorBoundary>
+        { createMainHeader(
+          onInputChangeHandler,
+          onClickEnterButton,
+          onClickSearchButton,
+          onClickFilterButton,
+          searchBy) 
+        }
+      </ErrorBoundary>
     );
   }
 }

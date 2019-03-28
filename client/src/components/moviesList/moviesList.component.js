@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './moviesList.css';
-import createMovieBlock from '../movieBlock/movieBlock.component';
+import createMovieBlock from './movieBlock/movieBlock.component';
+import ErrorBoundary from '../common/errorBoundary/errorBoundary.component';
 
 class MoviesList extends React.Component {
   constructor(props) {
@@ -10,19 +11,15 @@ class MoviesList extends React.Component {
   render() {
     const { data, onMovieClick } = this.props;
    
-    /*let content;
-    if (data && data.length > 0) {
-      content = ""
-    }*/
     const listItems = data.map((data) =>
       createMovieBlock(data, onMovieClick)
     );
 
     return (
-      <>
+      <ErrorBoundary>
         { !data || data.length <= 0 ? (
             <div className={styles.center}>
-              <p>No films found</p>
+              <p className={styles.noFound}>No films found</p>
             </div>
           ) : (
             <div className={styles.main}>
@@ -30,7 +27,7 @@ class MoviesList extends React.Component {
             </div>
           )
         }
-      </>
+      </ErrorBoundary>
     );
   }
 }

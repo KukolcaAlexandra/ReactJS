@@ -1,13 +1,10 @@
-import { title } from '../consts';
 
 const filterByTitle = function(data, searchValue) {
-  console.log('filterByTitle');
   const dataString = data && data.title && data.title.toLowerCase();
   return dataString.indexOf(searchValue.toLowerCase()) === -1 ? false : true;
 }
 
 const filterByGenre = function(data, searchValue) {
-  console.log('filterByGenre');
   const dataArray = data && data.genres;
   return dataArray.some((elem) => {
     const res = elem.toLowerCase().indexOf(searchValue.toLowerCase());

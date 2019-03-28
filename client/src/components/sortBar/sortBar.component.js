@@ -1,11 +1,9 @@
 import React from 'react';
-import styles from './sortBar.css';
 import {releaseDate, rating} from '../../consts';
+import ErrorBoundary from '../common/errorBoundary/errorBoundary.component';
+import styles from './sortBar.css';
 
 export default function createSortBar(selectedMovie, count, sortBy, onChangeSortBy) {
-  console.log('createSortBar');
-  console.log(count);
-  console.log(sortBy);
   let selectedStyle = `${styles.item} ${styles.selected}`;
   const renderItem = (name, className, onClick) => {
     if (onClick) {
@@ -37,8 +35,10 @@ export default function createSortBar(selectedMovie, count, sortBy, onChangeSort
     </>
   );
   return (
-    <div className={styles.sortBar}>
-      {count > 0 && (selectedMovie && renderGenreItem() || sortFilter())}
-    </div>
+    <ErrorBoundary>
+      <div className={styles.sortBar}>
+        {count > 0 && (selectedMovie && renderGenreItem() || sortFilter())}
+      </div>
+    </ErrorBoundary>
   );
 }
