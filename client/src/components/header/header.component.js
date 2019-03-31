@@ -1,37 +1,36 @@
 import React from 'react';
 import ErrorBoundary from '../common/errorBoundary/errorBoundary.component';
-import createMainHeader from './mainHeader/mainHeader.component';
-import createDescriptionHeader from './descriptionHeader/descriptionHeader.component';
+import MainHeader from './mainHeader/mainHeader.component';
+import DescriptionHeader from './descriptionHeader/descriptionHeader.component';
 
-class Header extends React.Component {
+export default function Header(props) {
   
-  render() {
-    const { 
-      selectedMovie,
-      onBackButton,
-      onInputChangeHandler,
-      onClickEnterButton,
-      onClickSearchButton,
-      onClickFilterButton,
-      searchBy
-    } = this.props;
+  const { 
+    selectedMovie,
+    onBackButton,
+    onInputChangeHandler,
+    onClickEnterButton,
+    onClickSearchButton,
+    onClickFilterButton,
+    searchBy
+  } = props;
     
-    return selectedMovie ? (
-      <ErrorBoundary>
-        {createDescriptionHeader(selectedMovie, onBackButton)} 
-      </ErrorBoundary>
-    ):(
-      <ErrorBoundary>
-        { createMainHeader(
-          onInputChangeHandler,
-          onClickEnterButton,
-          onClickSearchButton,
-          onClickFilterButton,
-          searchBy) 
-        }
-      </ErrorBoundary>
-    );
-  }
+  return (
+    <ErrorBoundary>
+      {selectedMovie ? (
+        <DescriptionHeader
+          data={selectedMovie}
+          onClick={onBackButton}
+        />
+      ):(
+        <MainHeader
+          onInputChange={onInputChangeHandler}
+          onClickEnterButton={onClickEnterButton}
+          onClickSearchButton={onClickSearchButton}
+          onClickFilterButton={onClickFilterButton}
+          searchBy={searchBy}
+        />
+      )}
+    </ErrorBoundary>
+  );
 }
-
-export default Header;

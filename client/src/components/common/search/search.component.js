@@ -1,13 +1,13 @@
 import React from 'react';
 
-export default function createInput(onChangeHandler, onClickHandler, placeholder='') {
+export default function Input(props) {
   return (
     <input
       type="text"
       name="input"
-      placeholder={placeholder}
-      onChange={onChangeHandler}
-      onKeyDown={onClickHandler}
+      placeholder={props.placeholder}
+      onChange={props.onChangeHandler}
+      onKeyDown={props.onClickHandler}
     />  
   );
 }

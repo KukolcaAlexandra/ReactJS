@@ -1,31 +1,29 @@
 import React from 'react';
 import styles from './button.css';
 
-export default function createButton(title, onClickHandler, size='small', pressed=false) {
+export default function Button(props) {
   let className;
   let classPressed;
 
-  if (size === 'small') {
+  if (props.size === 'small') {
     className = styles.small;
-  } else if (size === 'medium') {
+  } else if (props.size === 'medium') {
     className = styles.medium;
-  } else if (size === 'big') {
+  } else if (props.size === 'big') {
     className = styles.big;
   } 
   
-  if (pressed) {
+  if (props.pressed) {
     classPressed = styles.pressed;
   }
   
   return (
-    <>
       <input
         className={[className, styles.button, classPressed].join(' ')}
         type="button"
         name="button"
-        value={title}
-        onClick={onClickHandler}
-      />  
-    </>
+        value={props.title}
+        onClick={props.onClick}
+      />
   );
 }

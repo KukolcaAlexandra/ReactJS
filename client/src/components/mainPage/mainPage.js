@@ -1,32 +1,32 @@
 import React from 'react';
 import Header from '../header/header.component';
-import createFooter from '../footer/footer.component';
+import Footer from '../footer/footer.component';
 import MoviesList from '../moviesList/moviesList.component';
 import { title, releaseDate, rating } from '../../consts';
 import movies from '../../mock-data';
-import createSortBar from '../sortBar/sortBar.component';
+import SortBar from '../sortBar/sortBar.component';
 import { filterByTitle, filterByGenre, sortByDate, sortByRating } from '../../utils/filterMethods';
 import styles from './mainPage.css';
 
 class MainPage extends React.Component {
-  constructor(props) {
-    super(props);
-    this.onClickEnterButton = this.onClickEnterButton.bind(this);
-    this.onInputChangeHandler = this.onInputChangeHandler.bind(this);
-    this.onClickSearchButton = this.onClickSearchButton.bind(this);
-    this.onClickFilterButton = this.onClickFilterButton.bind(this);
-    this.onChangeSortBy = this.onChangeSortBy.bind(this);
-    this.onMovieClick = this.onMovieClick.bind(this);
-    this.onBackButton = this.onBackButton.bind(this);
-    this.state = {
-      searchInput: '',
-      searchBy: title,
-      searchResult: [],
-      sortBy: releaseDate,
-      selectedMovie: null
-    }
-    this.searchValue = '';
+  
+  state = {
+    searchInput: '',
+    searchBy: title,
+    searchResult: [],
+    sortBy: releaseDate,
+    selectedMovie: null
   }
+
+  searchValue = '';
+
+  onClickEnterButton = this.onClickEnterButton.bind(this);
+  onInputChangeHandler = this.onInputChangeHandler.bind(this);
+  onClickSearchButton = this.onClickSearchButton.bind(this);
+  onClickFilterButton = this.onClickFilterButton.bind(this);
+  onChangeSortBy = this.onChangeSortBy.bind(this);
+  onMovieClick = this.onMovieClick.bind(this);
+  onBackButton = this.onBackButton.bind(this);
   
   onClickSearchButton() {
     if (this.searchValue) {
@@ -99,9 +99,13 @@ class MainPage extends React.Component {
           onInputChangeHandler={this.onInputChangeHandler}
           searchBy = {this.state.searchBy}
         />
-        {createSortBar(this.state.selectedMovie, this.state.searchResult.length, this.state.sortBy, this.onChangeSortBy)}
+        <SortBar
+          selectedMovie={this.state.selectedMovie}
+          count={this.state.searchResult.length}
+          sortBy={this.state.sortBy}
+          onChangeSortBy={this.onChangeSortBy}/>
         <MoviesList data={this.state.searchResult} onMovieClick={this.onMovieClick}/>
-        {createFooter()}
+        <Footer/>
       </div>
     );
   }
