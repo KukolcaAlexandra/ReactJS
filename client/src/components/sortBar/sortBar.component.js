@@ -4,7 +4,9 @@ import ErrorBoundary from '../common/errorBoundary/errorBoundary.component';
 import styles from './sortBar.css';
 
 export default function SortBar(props) {
-  let selectedStyle = `${styles.item} ${styles.selected}`;
+  let selectedStyle = `${styles.item} ${styles.selected} ${styles.cursor}`;
+  let unselectedStyle = `${styles.item} ${styles.cursor}`;
+
   const renderItem = (name, className, onClick) => {
     if (onClick) {
       return (
@@ -30,8 +32,8 @@ export default function SortBar(props) {
     <>
       { renderItem(`${props.count} movies found`, styles.item) }
       { renderItem('Sort by', styles.item) }
-      { renderItem('release date', props.sortBy === releaseDate ? selectedStyle : styles.item, props.onChangeSortBy) }
-      { renderItem('rating', props.sortBy === rating ? selectedStyle : styles.item, props.onChangeSortBy) }
+      { renderItem('release date', props.sortBy === releaseDate ? selectedStyle : unselectedStyle, props.onChangeSortBy) }
+      { renderItem('rating', props.sortBy === rating ? selectedStyle : unselectedStyle, props.onChangeSortBy) }
     </>
   );
   return (

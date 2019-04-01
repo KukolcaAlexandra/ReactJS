@@ -26,6 +26,5 @@ body {
 .container {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
-  min-height: 100%;
+  flex-grow: 1;
 }

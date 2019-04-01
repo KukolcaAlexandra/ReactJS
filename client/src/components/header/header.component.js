@@ -3,34 +3,51 @@ import ErrorBoundary from '../common/errorBoundary/errorBoundary.component';
 import MainHeader from './mainHeader/mainHeader.component';
 import DescriptionHeader from './descriptionHeader/descriptionHeader.component';
 
-export default function Header(props) {
+class Header extends React.Component {
+  state = {
+    searchValue: '',
+  }
+
+  onClickEnterButton = (event) => {
+    if (event.keyCode === 13) {
+      props.onClickSearchButton();
+    }
+  }
   
-  const { 
-    selectedMovie,
-    onBackButton,
-    onInputChangeHandler,
-    onClickEnterButton,
-    onClickSearchButton,
-    onClickFilterButton,
-    searchBy
-  } = props;
+  onInputChangeHandler = (event) => {
+    this.setState({
+      searchValue: event.target.value,
+    });
+  }
+
+  render() {
+    const { 
+      selectedMovie,
+      onBackButton,
+      onClickSearchButton,
+      onClickFilterButton,
+      searchBy
+    } = this.props;
     
-  return (
-    <ErrorBoundary>
-      {selectedMovie ? (
-        <DescriptionHeader
-          data={selectedMovie}
-          onClick={onBackButton}
-        />
-      ):(
-        <MainHeader
-          onInputChange={onInputChangeHandler}
-          onClickEnterButton={onClickEnterButton}
-          onClickSearchButton={onClickSearchButton}
-          onClickFilterButton={onClickFilterButton}
-          searchBy={searchBy}
-        />
-      )}
-    </ErrorBoundary>
-  );
+    return (
+      <ErrorBoundary>
+        {selectedMovie ? (
+          <DescriptionHeader
+            data={selectedMovie}
+            onClick={onBackButton}
+          />
+        ):(
+          <MainHeader
+            onInputChange={this.onInputChangeHandler}
+            onClickEnterButton={this.onClickEnterButton}
+            onClickSearchButton={()=>onClickSearchButton(this.state.searchValue)}
+            onClickFilterButton={onClickFilterButton}
+            searchBy={searchBy}
+          />
+        )}
+      </ErrorBoundary>
+    );
+  }
 }
+
+export default Header;

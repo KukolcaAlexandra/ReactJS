@@ -3,13 +3,9 @@ import styles from './movieBlock.css';
 
 export default function createMovieBlock(data, onMovieClick) {
 
-  const onClick = (data) => {
-    onMovieClick(data);
-  }
-
   const date = new Date(data.release_date);
   return (
-    <div className={styles.container} key={data.id} onClick={()=>onClick(data)}>
+    <div className={styles.container} key={data.id} onClick={()=>onMovieClick(data)}>
       <img className={styles.image} src={data.poster_path}/>
       <div className={styles.titleBlock}>
         <h3>{data.title}</h3>
