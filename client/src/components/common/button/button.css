@@ -1,0 +1,40 @@
+.small {
+  background-color: grey;
+  width: 80px;
+  height: 20px;
+}
+
+.medium {
+  background-color: lightgray;
+  width: 120px;
+  height: 25px;
+}
+
+input.big {
+  background-color:#ffcccc;
+  width: 150px;
+  height: 30px;
+  margin-left: auto;
+}
+
+.button {
+  border-radius: 5px;
+  border: none;
+  margin-left: 10px;
+  text-decoration: none;
+  cursor: pointer;
+  transition-duration: 0.4s;
+}
+
+.button:hover {
+  box-shadow: 10px;
+  background-color: #ffb3b3;
+}
+
+.button:focus {
+  outline: 0;
+}
+
+.pressed {
+  background-color:#ffcccc;
+}

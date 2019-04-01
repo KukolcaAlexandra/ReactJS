@@ -1,45 +1,75 @@
-import React from "react";
-import ReactDOM from "react-dom";
+import React from 'react';
+import Main from './components/main/main';
+import Header from './components/header/header.component';
+import Footer from './components/footer/footer.component';
+import { filterByTitle, filterByGenre, sortByDate } from './utils/filterMethods';
+import { title } from './consts';
+import movies from './mock-data';
+import styles from './app.css';
 
-import styles from './app.scss';
-//import styles from './App.css';
-import styles2 from "./sample.less";
-
-function helloWorld() {
-  return React.createElement("h1", null, "Hello World");
-}
-
-function createElement() {
-  return React.createElement("div", null, "createElement");
-}
-
-class Component extends React.Component {
-  render() {
-    return <div className={styles.app}>{this.props.name}</div>;
+class App extends React.Component {
+  
+  state = {
+    searchBy: title,
+    searchResult: [],
+    selectedMovie: null
   }
-}
 
-class PureComponent extends React.PureComponent {
-  render() {
-    return <div className={styles2.header} >{this.props.name}</div>;
+  onClickSearchButton = (searchValue) => {
+    if (searchValue) {
+      const filterFunction = this.state.searchBy === title ? filterByTitle : filterByGenre;
+      const foundMovies = movies.data.filter((movie) => filterFunction(movie, searchValue));
+
+      this.setState({
+        searchResult: foundMovies.length > 0 ? foundMovies.sort(sortByDate) : foundMovies,
+      }); 
+    } else {
+      this.setState({searchResult: []}); 
+    }
   }
-}
 
-const createFunctionalComponent = name => <div>{name}</div>;
+  onClickFilterButton = (event) => {
+    this.setState({ searchBy: event.target.value});
+  }
 
-class MainComponent extends React.Component {
+  onMovieClick = (data) => {
+    const sortedResult = this.state.searchResult.filter((movie) => {
+      return filterByGenre(movie, data.genres[0]) && movie.id !== data.id;
+    });
+
+    this.setState({
+      selectedMovie: data,
+      searchResult:  sortedResult
+    });
+    window.scrollTo(0, 0);
+  }
+
+  onBackButton = () => {
+    this.setState({
+      selectedMovie: null,
+      searchResult: []
+    });
+  }
+
   render() {
     return (
-      <div className={styles.ap9p}>
-        {helloWorld()}
-        {createElement()}
-        <Component name="Component" />
-        <PureComponent name="PureComponent" />
-        {createFunctionalComponent("functional component")}
+      <div className={styles.container}>
+        <Header
+          selectedMovie={this.state.selectedMovie}
+          onBackButton={this.onBackButton}
+          onClickFilterButton={this.onClickFilterButton}
+          onClickSearchButton={this.onClickSearchButton}
+          searchBy = {this.state.searchBy}
+        />
+        <Main
+          selectedMovie={this.state.selectedMovie}
+          searchResult={this.state.searchResult}
+          onMovieClick={this.onMovieClick}
+        />
+        <Footer/>
       </div>
     );
   }
 }
 
-const rootElement = document.getElementById("root");
-ReactDOM.render(<MainComponent />, rootElement);
+export default App;
