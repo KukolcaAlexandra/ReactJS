@@ -19,7 +19,6 @@ class App extends React.Component {
     if (searchValue) {
       const filterFunction = this.state.searchBy === title ? filterByTitle : filterByGenre;
       const foundMovies = movies.data.filter((movie) => filterFunction(movie, searchValue));
-
       this.setState({
         searchResult: foundMovies.length > 0 ? foundMovies.sort(sortByDate) : foundMovies,
       }); 

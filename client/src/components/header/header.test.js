@@ -6,9 +6,14 @@ import Adapter from 'enzyme-adapter-react-16';
 configure({ adapter: new Adapter() });
 
 describe('Header component', () => {
-    
-  it('should be render correctly', () => {
-    const selectedMovie={
+  let selectedMovie;
+  let onBackButton;
+  let onClickFilterButton;
+  let onClickSearchButton;
+  let searchBy;
+
+  beforeEach(() => {
+    selectedMovie={
       'title': 'Fifty Shades Freed',
       'tagline': `Don't miss the climax`,
       'release_date': '2018-02-07',
@@ -16,11 +21,13 @@ describe('Header component', () => {
       'overview': 'Believing they have left behind shadowy figures from their past, newlyweds Christian and Ana fully embrace an inextricable connection and shared life of luxury. But just as she steps into her role as Mrs. Grey and he relaxes into an unfamiliar stability, new threats could jeopardize their happy ending before it even begins.',
       'runtime': 100
     };
-    const onBackButton = jest.fn();
-    const onClickFilterButton = jest.fn();
-    const onClickSearchButton = jest.fn();
-    const searchBy = 'TITLE';
+    onBackButton = jest.fn();
+    onClickFilterButton = jest.fn();
+    onClickSearchButton = jest.fn();
+    searchBy = 'TITLE';
+  });
 
+  it('should be render correctly', () => {
     const component = shallow(
       <Header
         selectedMovie={selectedMovie}
@@ -32,22 +39,9 @@ describe('Header component', () => {
     );
     expect(component).toMatchSnapshot();
   });  
-  /*
-  it('should be render correctly', () => {
-    
-    const selectedMovie={
-      'title': 'Fifty Shades Freed',
-      'tagline': `Don't miss the climax`,
-      'release_date': '2018-02-07',
-      'poster_path': 'https://image.tmdb.org/t/p/w500/3kcEGnYBHDeqmdYf8ZRbKdfmlUy.jpg',
-      'overview': 'Believing they have left behind shadowy figures from their past, newlyweds Christian and Ana fully embrace an inextricable connection and shared life of luxury. But just as she steps into her role as Mrs. Grey and he relaxes into an unfamiliar stability, new threats could jeopardize their happy ending before it even begins.',
-      'runtime': 100
-    };
-    const onBackButton = jest.fn();
-    const onClickFilterButton = jest.fn();
-    const onClickSearchButton = jest.fn();
-    const searchBy = 'TITLE';
 
+  it('should be render correctly', () => {
+    selectedMovie = null;
     const component = shallow(
       <Header
         selectedMovie={selectedMovie}
@@ -57,8 +51,45 @@ describe('Header component', () => {
         searchBy = {searchBy}
       />
     );
-    component.onClickEnterButton();
+    expect(component).toMatchSnapshot();
+  });  
+  
+  it('should be onClickSearchButton call', () => {
+    const component = shallow(
+      <Header
+        selectedMovie={selectedMovie}
+        onBackButton={onBackButton}
+        onClickFilterButton={onClickFilterButton}
+        onClickSearchButton={onClickSearchButton}
+        searchBy = {searchBy}
+      />
+    );
+    const instance = component.instance();
+    const event = {
+      'keyCode': 13,
+    }
+    instance.onClickEnterButton(event);
     expect(onClickSearchButton).toHaveBeenCalled();
-  });*/
+  });
+
+  it('should set State to input value after onInputChangeHandler', () => {
+    const component = shallow(
+      <Header
+        selectedMovie={selectedMovie}
+        onBackButton={onBackButton}
+        onClickFilterButton={onClickFilterButton}
+        onClickSearchButton={onClickSearchButton}
+        searchBy = {searchBy}
+      />
+    );
+    const instance = component.instance();
+    const event = {
+      'target': {
+        'value': 'adv',
+      }
+    }
+    instance.onInputChangeHandler(event);
+    expect(component.state('searchValue')).toBe('adv');
+  });
 
 })

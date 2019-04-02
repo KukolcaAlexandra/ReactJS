@@ -10,7 +10,7 @@ class Header extends React.Component {
 
   onClickEnterButton = (event) => {
     if (event.keyCode === 13) {
-      props.onClickSearchButton();
+      this.props.onClickSearchButton(this.state.searchValue);
     }
   }
   

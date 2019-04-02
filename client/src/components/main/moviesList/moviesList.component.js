@@ -1,12 +1,12 @@
 import React from 'react';
 import styles from './moviesList.css';
-import createMovieBlock from './movieBlock/movieBlock.component';
+import MovieBlock from './movieBlock/movieBlock.component';
 import ErrorBoundary from '../../common/errorBoundary/errorBoundary.component';
 
 export default function MoviesList(props) {
   const { data, onMovieClick } = props;
   const listItems = data.map((data) =>
-    createMovieBlock(data, onMovieClick)
+    <MovieBlock data={data} key={data.id} onMovieClick={onMovieClick}/>
   );
 
   return (

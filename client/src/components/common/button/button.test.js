@@ -13,14 +13,13 @@ describe('Button component', () => {
     expect(component).toMatchSnapshot();
   });
 
-  /*
   it('medium button should be render correctly', () => {
     const onClick = jest.fn();
     const component = shallow(<Button title="Genre" onClick size='medium'/>);
-    expect(component.has(class: 'medium');
-  });*/
+    expect(component).toMatchSnapshot();
+  });
 
-  /*it('small button should be render correctly', () => {
+  it('small button should be render correctly', () => {
     const onClick = jest.fn();
     const component = shallow(<Button title="Search" onClick size='small'/>);
     expect(component).toMatchSnapshot();
@@ -30,6 +29,6 @@ describe('Button component', () => {
     const onClick = jest.fn();
     const component = shallow(<Button title="Search" onClick size='small' pressed={true}/>);
     expect(component).toMatchSnapshot();
-  });*/
+  });
 
 })
