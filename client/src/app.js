@@ -1,6 +1,6 @@
 import React from 'react';
-import Main from './components/main/main';
-import Header from './components/header/header.component';
+import Main from './components/main/main.container';
+import Header from './components/header/header.container';
 import Footer from './components/footer/footer.component';
 import { filterByTitle, filterByGenre, sortByDate } from './utils/filterMethods';
 import { title } from './consts';

@@ -10,11 +10,13 @@ export default function MainHeader (props) {
       <Input
         onChangeHandler={props.onInputChange}
         onClickHandler={props.onClickEnterButton}
-        placeholder='Search'/>
+        placeholder='Search'
+      />
       <SearchBar
         onClickSearchButton={props.onClickSearchButton}
         onClickFilterButton={props.onClickFilterButton}
-        searchBy={props.searchBy}/>
+        searchBy={props.searchBy}
+      />
     </div>
   )
 }

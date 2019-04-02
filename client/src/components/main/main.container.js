@@ -1,7 +1,7 @@
 import React from 'react';
-import MoviesList from '../moviesList/moviesList.component';
+import MoviesList from './moviesList/moviesList.component';
 import { releaseDate, rating } from '../../consts';
-import SortBar from '../sortBar/sortBar.component';
+import SortBar from './sortBar/sortBar.component';
 import { sortByDate, sortByRating } from '../../utils/filterMethods';
 import styles from './main.css';
 

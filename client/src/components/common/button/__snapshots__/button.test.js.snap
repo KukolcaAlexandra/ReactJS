@@ -1,7 +1,3 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Button component big button should be render correctly 1`] = `ShallowWrapper {}`;
-
-exports[`Button component medium button should be render correctly 1`] = `ShallowWrapper {}`;
-
-exports[`Button component small button should be render correctly 1`] = `ShallowWrapper {}`;

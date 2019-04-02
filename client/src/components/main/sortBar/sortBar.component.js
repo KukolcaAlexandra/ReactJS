@@ -1,6 +1,6 @@
 import React from 'react';
-import {releaseDate, rating} from '../../consts';
-import ErrorBoundary from '../common/errorBoundary/errorBoundary.component';
+import {releaseDate, rating} from '../../../consts';
+import ErrorBoundary from '../../common/errorBoundary/errorBoundary.component';
 import styles from './sortBar.css';
 
 export default function SortBar(props) {

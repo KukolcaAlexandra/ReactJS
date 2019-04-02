@@ -1,7 +1,7 @@
 import React from 'react';
 import Button from '../../common/button/button.component';
 import { title, genre } from '../../../consts';
-import styles from './searchBar';
+import styles from './searchBar.css';
 
 export default function SearchBar(props) {
 

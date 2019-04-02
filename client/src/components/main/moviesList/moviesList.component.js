@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './moviesList.css';
 import createMovieBlock from './movieBlock/movieBlock.component';
-import ErrorBoundary from '../common/errorBoundary/errorBoundary.component';
+import ErrorBoundary from '../../common/errorBoundary/errorBoundary.component';
 
 export default function MoviesList(props) {
   const { data, onMovieClick } = props;
