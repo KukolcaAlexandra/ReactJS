@@ -1,9 +1,6 @@
 import React from 'react';
 import DescriptionHeader from './descriptionHeader.component';
-import {shallow, configure} from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
-
-configure({ adapter: new Adapter() });
+import {shallow} from 'enzyme';
 
 describe('DescriptionHeader component', () => {
     

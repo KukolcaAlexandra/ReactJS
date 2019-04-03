@@ -1,9 +1,6 @@
 import React from 'react';
 import ErrorBoundary from './errorBoundary.component';
 import {shallow, mount, configure} from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
-
-configure({ adapter: new Adapter() });
 
 function ProblemChild() {
   throw new Error('Error thrown from problem child');

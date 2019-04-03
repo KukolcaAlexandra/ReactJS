@@ -1,9 +1,6 @@
 import React from 'react';
 import MainHeader from './mainHeader.component';
-import {shallow, configure} from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
-
-configure({ adapter: new Adapter() });
+import {shallow} from 'enzyme';
 
 describe('MainHeader component', () => {
     

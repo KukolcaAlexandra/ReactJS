@@ -1,9 +1,6 @@
 import React from 'react';
 import Header from './header.container';
-import {shallow, configure} from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
-
-configure({ adapter: new Adapter() });
+import {shallow} from 'enzyme';
 
 describe('Header component', () => {
   let selectedMovie;

@@ -1,9 +1,6 @@
 import React from 'react';
 import Main from './main.container';
-import {shallow, configure} from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
-
-configure({ adapter: new Adapter() });
+import {shallow} from 'enzyme';
 
 describe('Main component', () => {
   let selectedMovie;
