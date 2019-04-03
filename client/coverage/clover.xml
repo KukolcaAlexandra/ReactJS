@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1554248024486" clover="3.2.0">
-  <project timestamp="1554248024486" name="All files">
-    <metrics statements="84" coveredstatements="80" conditionals="61" coveredconditionals="50" methods="35" coveredmethods="32" elements="180" coveredelements="162" complexity="0" loc="84" ncloc="84" packages="14" files="16" classes="16"/>
+<coverage generated="1554296842013" clover="3.2.0">
+  <project timestamp="1554296842014" name="All files">
+    <metrics statements="83" coveredstatements="81" conditionals="61" coveredconditionals="51" methods="35" coveredmethods="33" elements="179" coveredelements="165" complexity="0" loc="83" ncloc="83" packages="14" files="16" classes="16"/>
     <package name="src">
       <metrics statements="17" coveredstatements="16" conditionals="8" coveredconditionals="4" methods="7" coveredmethods="6"/>
-      <file name="app.js" path="D:\js\reactjs\task4\ReactJS\client\src\app.js">
+      <file name="app.js" path="/Users/kukolca/Documents/reactjs/task4/ReactJS/client/src/app.js">
         <metrics statements="12" coveredstatements="11" conditionals="8" coveredconditionals="4" methods="7" coveredmethods="6"/>
         <line num="19" count="2" type="cond" truecount="2" falsecount="0"/>
         <line num="20" count="1" type="cond" truecount="1" falsecount="1"/>
@@ -19,21 +19,21 @@
         <line num="47" count="1" type="stmt"/>
         <line num="54" count="11" type="stmt"/>
       </file>
-      <file name="consts.js" path="D:\js\reactjs\task4\ReactJS\client\src\consts.js">
+      <file name="consts.js" path="/Users/kukolca/Documents/reactjs/task4/ReactJS/client/src/consts.js">
         <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="6" type="stmt"/>
         <line num="2" count="6" type="stmt"/>
         <line num="3" count="6" type="stmt"/>
         <line num="4" count="6" type="stmt"/>
       </file>
-      <file name="mock-data.js" path="D:\js\reactjs\task4\ReactJS\client\src\mock-data.js">
+      <file name="mock-data.js" path="/Users/kukolca/Documents/reactjs/task4/ReactJS/client/src/mock-data.js">
         <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
       </file>
     </package>
     <package name="src.components.common.button">
       <metrics statements="9" coveredstatements="9" conditionals="8" coveredconditionals="7" methods="1" coveredmethods="1"/>
-      <file name="button.component.js" path="D:\js\reactjs\task4\ReactJS\client\src\components\common\button\button.component.js">
+      <file name="button.component.js" path="/Users/kukolca/Documents/reactjs/task4/ReactJS/client/src/components/common/button/button.component.js">
         <metrics statements="9" coveredstatements="9" conditionals="8" coveredconditionals="7" methods="1" coveredmethods="1"/>
         <line num="8" count="4" type="cond" truecount="2" falsecount="0"/>
         <line num="9" count="2" type="stmt"/>
@@ -47,33 +47,32 @@
       </file>
     </package>
     <package name="src.components.common.errorBoundary">
-      <metrics statements="5" coveredstatements="3" conditionals="2" coveredconditionals="1" methods="3" coveredmethods="2"/>
-      <file name="errorBoundary.component.js" path="D:\js\reactjs\task4\ReactJS\client\src\components\common\errorBoundary\errorBoundary.component.js">
-        <metrics statements="5" coveredstatements="3" conditionals="2" coveredconditionals="1" methods="3" coveredmethods="2"/>
-        <line num="8" count="0" type="stmt"/>
-        <line num="12" count="1" type="stmt"/>
-        <line num="16" count="3" type="cond" truecount="1" falsecount="1"/>
-        <line num="17" count="0" type="stmt"/>
-        <line num="20" count="3" type="stmt"/>
+      <metrics statements="4" coveredstatements="4" conditionals="2" coveredconditionals="2" methods="3" coveredmethods="3"/>
+      <file name="errorBoundary.component.js" path="/Users/kukolca/Documents/reactjs/task4/ReactJS/client/src/components/common/errorBoundary/errorBoundary.component.js">
+        <metrics statements="4" coveredstatements="4" conditionals="2" coveredconditionals="2" methods="3" coveredmethods="3"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="16" count="5" type="cond" truecount="2" falsecount="0"/>
+        <line num="17" count="1" type="stmt"/>
+        <line num="20" count="4" type="stmt"/>
       </file>
     </package>
     <package name="src.components.common.search">
       <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-      <file name="search.component.js" path="D:\js\reactjs\task4\ReactJS\client\src\components\common\search\search.component.js">
+      <file name="search.component.js" path="/Users/kukolca/Documents/reactjs/task4/ReactJS/client/src/components/common/search/search.component.js">
         <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
         <line num="4" count="1" type="stmt"/>
       </file>
     </package>
     <package name="src.components.footer">
       <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-      <file name="footer.component.js" path="D:\js\reactjs\task4\ReactJS\client\src\components\footer\footer.component.js">
+      <file name="footer.component.js" path="/Users/kukolca/Documents/reactjs/task4/ReactJS/client/src/components/footer/footer.component.js">
         <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
         <line num="5" count="1" type="stmt"/>
       </file>
     </package>
     <package name="src.components.header">
       <metrics statements="6" coveredstatements="5" conditionals="4" coveredconditionals="3" methods="4" coveredmethods="3"/>
-      <file name="header.container.js" path="D:\js\reactjs\task4\ReactJS\client\src\components\header\header.container.js">
+      <file name="header.container.js" path="/Users/kukolca/Documents/reactjs/task4/ReactJS/client/src/components/header/header.container.js">
         <metrics statements="6" coveredstatements="5" conditionals="4" coveredconditionals="3" methods="4" coveredmethods="3"/>
         <line num="12" count="1" type="cond" truecount="1" falsecount="1"/>
         <line num="13" count="1" type="stmt"/>
@@ -85,7 +84,7 @@
     </package>
     <package name="src.components.header.descriptionHeader">
       <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-      <file name="descriptionHeader.component.js" path="D:\js\reactjs\task4\ReactJS\client\src\components\header\descriptionHeader\descriptionHeader.component.js">
+      <file name="descriptionHeader.component.js" path="/Users/kukolca/Documents/reactjs/task4/ReactJS/client/src/components/header/descriptionHeader/descriptionHeader.component.js">
         <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
         <line num="7" count="1" type="stmt"/>
         <line num="8" count="1" type="stmt"/>
@@ -93,21 +92,21 @@
     </package>
     <package name="src.components.header.mainHeader">
       <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-      <file name="mainHeader.component.js" path="D:\js\reactjs\task4\ReactJS\client\src\components\header\mainHeader\mainHeader.component.js">
+      <file name="mainHeader.component.js" path="/Users/kukolca/Documents/reactjs/task4/ReactJS/client/src/components/header/mainHeader/mainHeader.component.js">
         <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
         <line num="7" count="1" type="stmt"/>
       </file>
     </package>
     <package name="src.components.header.searchBar">
       <metrics statements="1" coveredstatements="1" conditionals="4" coveredconditionals="4" methods="1" coveredmethods="1"/>
-      <file name="searchBar.component.js" path="D:\js\reactjs\task4\ReactJS\client\src\components\header\searchBar\searchBar.component.js">
+      <file name="searchBar.component.js" path="/Users/kukolca/Documents/reactjs/task4/ReactJS/client/src/components/header/searchBar/searchBar.component.js">
         <metrics statements="1" coveredstatements="1" conditionals="4" coveredconditionals="4" methods="1" coveredmethods="1"/>
         <line num="8" count="2" type="stmt"/>
       </file>
     </package>
     <package name="src.components.main">
       <metrics statements="9" coveredstatements="9" conditionals="4" coveredconditionals="3" methods="2" coveredmethods="2"/>
-      <file name="main.container.js" path="D:\js\reactjs\task4\ReactJS\client\src\components\main\main.container.js">
+      <file name="main.container.js" path="/Users/kukolca/Documents/reactjs/task4/ReactJS/client/src/components/main/main.container.js">
         <metrics statements="9" coveredstatements="9" conditionals="4" coveredconditionals="3" methods="2" coveredmethods="2"/>
         <line num="19" count="2" type="cond" truecount="2" falsecount="0"/>
         <line num="20" count="1" type="stmt"/>
@@ -122,7 +121,7 @@
     </package>
     <package name="src.components.main.moviesList">
       <metrics statements="4" coveredstatements="4" conditionals="4" coveredconditionals="3" methods="2" coveredmethods="2"/>
-      <file name="moviesList.component.js" path="D:\js\reactjs\task4\ReactJS\client\src\components\main\moviesList\moviesList.component.js">
+      <file name="moviesList.component.js" path="/Users/kukolca/Documents/reactjs/task4/ReactJS/client/src/components/main/moviesList/moviesList.component.js">
         <metrics statements="4" coveredstatements="4" conditionals="4" coveredconditionals="3" methods="2" coveredmethods="2"/>
         <line num="7" count="1" type="stmt"/>
         <line num="8" count="1" type="stmt"/>
@@ -132,7 +131,7 @@
     </package>
     <package name="src.components.main.moviesList.movieBlock">
       <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
-      <file name="movieBlock.component.js" path="D:\js\reactjs\task4\ReactJS\client\src\components\main\moviesList\movieBlock\movieBlock.component.js">
+      <file name="movieBlock.component.js" path="/Users/kukolca/Documents/reactjs/task4/ReactJS/client/src/components/main/moviesList/movieBlock/movieBlock.component.js">
         <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
         <line num="6" count="2" type="stmt"/>
         <line num="8" count="2" type="stmt"/>
@@ -141,7 +140,7 @@
     </package>
     <package name="src.components.main.sortBar">
       <metrics statements="11" coveredstatements="11" conditionals="10" coveredconditionals="8" methods="4" coveredmethods="4"/>
-      <file name="sortBar.component.js" path="D:\js\reactjs\task4\ReactJS\client\src\components\main\sortBar\sortBar.component.js">
+      <file name="sortBar.component.js" path="/Users/kukolca/Documents/reactjs/task4/ReactJS/client/src/components/main/sortBar/sortBar.component.js">
         <metrics statements="11" coveredstatements="11" conditionals="10" coveredconditionals="8" methods="4" coveredmethods="4"/>
         <line num="7" count="2" type="stmt"/>
         <line num="8" count="2" type="stmt"/>
@@ -158,7 +157,7 @@
     </package>
     <package name="src.utils">
       <metrics statements="14" coveredstatements="14" conditionals="17" coveredconditionals="17" methods="5" coveredmethods="5"/>
-      <file name="filterMethods.js" path="D:\js\reactjs\task4\ReactJS\client\src\utils\filterMethods.js">
+      <file name="filterMethods.js" path="/Users/kukolca/Documents/reactjs/task4/ReactJS/client/src/utils/filterMethods.js">
         <metrics statements="14" coveredstatements="14" conditionals="17" coveredconditionals="17" methods="5" coveredmethods="5"/>
         <line num="2" count="3" type="stmt"/>
         <line num="3" count="12" type="cond" truecount="3" falsecount="0"/>

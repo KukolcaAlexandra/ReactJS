@@ -55,7 +55,5 @@ describe('MovieBlock component', () => {
       />  
     );
     const item = component.find('.container').simulate('click');
-    console.log(item);
-    //expect(component).toMatchSnapshot();
   });
 })
