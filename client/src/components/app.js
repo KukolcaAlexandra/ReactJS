@@ -1,23 +1,22 @@
 import React from 'react';
-import Main from './components/main/main.container';
-import Header from './components/header/header.container';
-import Footer from './components/footer/footer.component';
-import { filterByTitle, filterByGenre, sortByDate } from './utils/filterMethods';
-import { title } from './consts';
-import movies from './mock-data';
+import Main from './main/main.container';
+import Header from './header/header.container';
+import Footer from './footer/footer.component';
+import { filterByTitle, filterByGenre, sortByDate } from '../utils/filterMethods';
+import { title } from '../consts';
+import movies from '../mock-data';
 import styles from './app.css';
 
 class App extends React.Component {
   
   state = {
-    searchBy: title,
     searchResult: [],
     selectedMovie: null
   }
 
-  onClickSearchButton = (searchValue) => {
+  onClickSearchButton = (searchValue, searchBy) => {
     if (searchValue) {
-      const filterFunction = this.state.searchBy === title ? filterByTitle : filterByGenre;
+      const filterFunction = searchBy === title ? filterByTitle : filterByGenre;
       const foundMovies = movies.data.filter((movie) => filterFunction(movie, searchValue));
       this.setState({
         searchResult: foundMovies.length > 0 ? foundMovies.sort(sortByDate) : foundMovies,
@@ -25,10 +24,6 @@ class App extends React.Component {
     } else {
       this.setState({searchResult: []}); 
     }
-  }
-
-  onClickFilterButton = (event) => {
-    this.setState({ searchBy: event.target.value});
   }
 
   onMovieClick = (data) => {
@@ -58,7 +53,6 @@ class App extends React.Component {
           onBackButton={this.onBackButton}
           onClickFilterButton={this.onClickFilterButton}
           onClickSearchButton={this.onClickSearchButton}
-          searchBy = {this.state.searchBy}
         />
         <Main
           selectedMovie={this.state.selectedMovie}

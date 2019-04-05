@@ -1,11 +1,14 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import ErrorBoundary from '../common/errorBoundary/errorBoundary.component';
 import MainHeader from './mainHeader/mainHeader.component';
 import DescriptionHeader from './descriptionHeader/descriptionHeader.component';
+import { title } from '../../consts';
 
 class Header extends React.Component {
   state = {
     searchValue: '',
+    searchBy: title,
   }
 
   onClickEnterButton = (event) => {
@@ -20,13 +23,15 @@ class Header extends React.Component {
     });
   }
 
+  onClickFilterButton = (event) => {
+    this.setState({ searchBy: event.target.value});
+  }
+
   render() {
     const { 
       selectedMovie,
       onBackButton,
-      onClickSearchButton,
-      onClickFilterButton,
-      searchBy
+      onClickSearchButton
     } = this.props;
     
     return (
@@ -40,14 +45,20 @@ class Header extends React.Component {
           <MainHeader
             onInputChange={this.onInputChangeHandler}
             onClickEnterButton={this.onClickEnterButton}
-            onClickSearchButton={()=>onClickSearchButton(this.state.searchValue)}
-            onClickFilterButton={onClickFilterButton}
-            searchBy={searchBy}
+            onClickSearchButton={()=>onClickSearchButton(this.state.searchValue, this.state.searchBy)}
+            onClickFilterButton={this.onClickFilterButton}
+            searchBy={this.state.searchBy}
           />
         )}
       </ErrorBoundary>
     );
   }
+}
+
+Header.propTypes = {
+  selectedMovie: PropTypes.object,
+  onBackButton: PropTypes.func,
+  onClickSearchButton: PropTypes.func
 }
 
 export default Header;

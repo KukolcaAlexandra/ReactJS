@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import MoviesList from './moviesList/moviesList.component';
 import { releaseDate, rating } from '../../consts';
 import SortBar from './sortBar/sortBar.component';
@@ -51,6 +52,12 @@ class Main extends React.Component {
       </div>
     );
   }
+}
+
+Main.propTypes = {
+  selectedMovie: PropTypes.object,
+  searchResult: PropTypes.array,
+  onMovieClick: PropTypes.func
 }
 
 export default Main;

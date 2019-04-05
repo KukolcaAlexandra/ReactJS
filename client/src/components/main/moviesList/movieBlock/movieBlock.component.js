@@ -1,7 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styles from './movieBlock.css';
 
-export default function MovieBlock(props) {
+function MovieBlock(props) {
 
   const date = new Date(props.data.release_date);
 
@@ -21,3 +22,10 @@ export default function MovieBlock(props) {
     </div>
   );
 }
+
+MovieBlock.propTypes = {
+  data: PropTypes.object,
+  onMovieClick: PropTypes.func
+}
+
+export default MovieBlock;

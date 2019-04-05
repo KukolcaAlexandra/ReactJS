@@ -1,9 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styles from './moviesList.css';
 import MovieBlock from './movieBlock/movieBlock.component';
 import ErrorBoundary from '../../common/errorBoundary/errorBoundary.component';
 
-export default function MoviesList(props) {
+function MoviesList(props) {
   const { data, onMovieClick } = props;
   const listItems = data.map((data) =>
     <MovieBlock data={data} key={data.id} onMovieClick={onMovieClick}/>
@@ -24,3 +25,10 @@ export default function MoviesList(props) {
     </ErrorBoundary>
   );
 }
+
+MoviesList.propTypes = {
+  data: PropTypes.array,
+  onMovieClick: PropTypes.func
+}
+
+export default MoviesList;
