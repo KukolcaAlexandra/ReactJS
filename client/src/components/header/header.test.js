@@ -69,6 +69,26 @@ describe('Header component', () => {
     expect(onClickSearchButton).toHaveBeenCalled();
   });
 
+  it('should set state "searchBy" to genre after onClickFilterButton', () => {
+    const component = shallow(
+      <Header
+        selectedMovie={selectedMovie}
+        onBackButton={onBackButton}
+        onClickFilterButton={onClickFilterButton}
+        onClickSearchButton={onClickSearchButton}
+        searchBy = {searchBy}
+      />
+    );
+    const instance = component.instance();
+    const event = {
+      'target': {
+        'value': 'genre',
+      }
+    }
+    instance.onClickFilterButton(event);
+    expect(component.state('searchBy')).toBe('genre');
+  });
+
   it('should set State to input value after onInputChangeHandler', () => {
     const component = shallow(
       <Header
