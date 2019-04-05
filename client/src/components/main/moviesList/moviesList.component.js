@@ -6,6 +6,7 @@ import ErrorBoundary from '../../common/errorBoundary/errorBoundary.component';
 
 function MoviesList(props) {
   const { data, onMovieClick } = props;
+  console.log(props);
   const listItems = data.map((data) =>
     <MovieBlock data={data} key={data.id} onMovieClick={onMovieClick}/>
   );

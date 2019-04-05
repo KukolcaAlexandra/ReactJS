@@ -23,7 +23,7 @@ function SearchBar(props) {
           <Button title={genre} onClick={props.onClickFilterButton} size="small"/>
         )
       }
-      <Button title="SEARCH" onClick={props.onClickSearchButton} size="big"/>
+      <Button title="SEARCH" onClick={props.onClickSearchButton/*props.onSearchButton*/} size="big"/>
     </div>  
   );
 }
@@ -31,7 +31,8 @@ function SearchBar(props) {
 SearchBar.propTypes = {
   onClickSearchButton: PropTypes.func,
   onClickFilterButton: PropTypes.func,
-  searchBy: PropTypes.string
+  searchBy: PropTypes.string,
+  onSearchButton: PropTypes.func
 }
 
 export default SearchBar;

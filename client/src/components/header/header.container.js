@@ -1,9 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import ErrorBoundary from '../common/errorBoundary/errorBoundary.component';
 import MainHeader from './mainHeader/mainHeader.component';
 import DescriptionHeader from './descriptionHeader/descriptionHeader.component';
 import { title } from '../../consts';
+import { loadSearchedMovies } from '../../actions/movieActions';
 
 class Header extends React.Component {
   state = {
@@ -45,9 +47,10 @@ class Header extends React.Component {
           <MainHeader
             onInputChange={this.onInputChangeHandler}
             onClickEnterButton={this.onClickEnterButton}
-            onClickSearchButton={()=>onClickSearchButton(this.state.searchValue, this.state.searchBy)}
+            onClickSearchButton={()=>/*onClickSearchButton*/this.props.loadMovies(this.state.searchValue, this.state.searchBy)}
             onClickFilterButton={this.onClickFilterButton}
             searchBy={this.state.searchBy}
+            onSearchButton={this.props.loadMovies}
           />
         )}
       </ErrorBoundary>
@@ -55,10 +58,26 @@ class Header extends React.Component {
   }
 }
 
+
 Header.propTypes = {
   selectedMovie: PropTypes.object,
   onBackButton: PropTypes.func,
-  onClickSearchButton: PropTypes.func
+  onClickSearchButton: PropTypes.func,
+  loadMovies: PropTypes.func
 }
 
-export default Header;
+function mapStateToProps(state) {
+  return { 
+    searchResult: state.loadedMovies.moviesList
+  }
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    loadMovies: (searchValue, searchBy) => {
+      dispatch(loadSearchedMovies(searchValue, searchBy))
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

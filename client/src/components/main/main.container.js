@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import MoviesList from './moviesList/moviesList.component';
 import { releaseDate, rating } from '../../consts';
 import SortBar from './sortBar/sortBar.component';
@@ -32,20 +33,20 @@ class Main extends React.Component {
   }
 
   render() {
-    let sortedResult = this.props.searchResult.sort(this.state.sortMethod);
-
+    //let sortedResult = this.props.searchResult.sort(this.state.sortMethod);
+    console.log(this.props.searchResult);
     return (
       <div className={styles.container}>
         
         <SortBar
           selectedMovie={this.props.selectedMovie}
-          count={this.props.searchResult.length}
+          count={this.props.total}
           sortBy={this.state.sortBy}
           onChangeSortBy={this.onChangeSortBy}
         />
 
         <MoviesList
-          data={sortedResult}
+          data={/*sortedResult*/this.props.searchResult}
           onMovieClick={this.props.onMovieClick}
         />
         
@@ -57,7 +58,15 @@ class Main extends React.Component {
 Main.propTypes = {
   selectedMovie: PropTypes.object,
   searchResult: PropTypes.array,
-  onMovieClick: PropTypes.func
+  onMovieClick: PropTypes.func,
+  total: PropTypes.number
 }
 
-export default Main;
+function mapStateToProps(state) {
+  return { 
+    searchResult: state.loadedMovies.moviesList,
+    total: state.loadedMovies.total
+  }
+}
+
+export default connect(mapStateToProps, null)(Main);

@@ -17,6 +17,7 @@ function MainHeader (props) {
         onClickSearchButton={props.onClickSearchButton}
         onClickFilterButton={props.onClickFilterButton}
         searchBy={props.searchBy}
+        onSearchButton={props.onSearchButton}
       />
     </div>
   )
@@ -27,7 +28,8 @@ MainHeader.propTypes = {
   onClickEnterButton: PropTypes.func,
   onClickSearchButton: PropTypes.func,
   onClickFilterButton: PropTypes.func,
-  searchBy: PropTypes.string
+  searchBy: PropTypes.string,
+  onSearchButton: PropTypes.func,
 }
 
 export default MainHeader;

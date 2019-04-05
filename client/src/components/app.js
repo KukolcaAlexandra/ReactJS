@@ -41,7 +41,7 @@ class App extends React.Component {
   onBackButton = () => {
     this.setState({
       selectedMovie: null,
-      searchResult: []
+      //searchResult: []
     });
   }
 
@@ -56,7 +56,7 @@ class App extends React.Component {
         />
         <Main
           selectedMovie={this.state.selectedMovie}
-          searchResult={this.state.searchResult}
+          //searchResult={this.state.searchResult}
           onMovieClick={this.onMovieClick}
         />
         <Footer/>
