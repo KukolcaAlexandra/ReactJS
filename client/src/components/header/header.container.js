@@ -9,12 +9,10 @@ import { loadSearchedMovies } from '../../actions/movieActions';
 import { resetOffset } from '../../actions/offsetActions';
 import { resetSelectedMovie } from '../../actions/selectedMovieActions';
 import { setSearchValue, setSearchBy } from '../../actions/searchActions';
+import { store } from '../../store/index';
 
 class Header extends React.Component {
-  state = {
-    searchValue: '',
-  }
-  
+
   onClickEnterButton = (event) => {
     if (event.keyCode === 13) {
       this.onClickSearchButton();
@@ -23,9 +21,7 @@ class Header extends React.Component {
   
   onInputChangeHandler = (event) => {
     console.log('onInputChangeHandler');
-    this.setState({
-      searchValue: event.target.value,
-    });
+    this.props.setSearchValue(event.target.value);
   }
 
   onClickSearchByButton = (event) => {
@@ -34,7 +30,6 @@ class Header extends React.Component {
   }
 
   onClickSearchButton = () => {
-    this.props.setSearchValue(this.state.searchValue);
     this.props.resetOffset();
     this.props.loadMovies();
   }
@@ -66,7 +61,7 @@ class Header extends React.Component {
             onClickSearchByButton={this.onClickSearchByButton}
             searchBy={searchBy}
             onSearchButton={loadMovies}
-            searchValue={this.state.searchValue}
+            searchValue={this.props.searchValue}
           />
         )}
       </ErrorBoundary>
