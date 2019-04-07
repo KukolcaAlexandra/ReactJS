@@ -4,53 +4,69 @@ import { connect } from 'react-redux';
 import ErrorBoundary from '../common/errorBoundary/errorBoundary.component';
 import MainHeader from './mainHeader/mainHeader.component';
 import DescriptionHeader from './descriptionHeader/descriptionHeader.component';
-import { title } from '../../consts';
+import { apiParams } from '../../consts';
 import { loadSearchedMovies } from '../../actions/movieActions';
+import { resetOffset } from '../../actions/offsetActions';
+import { resetSelectedMovie } from '../../actions/selectedMovieActions';
+import { setSearchValue, setSearchBy } from '../../actions/searchActions';
 
 class Header extends React.Component {
   state = {
     searchValue: '',
-    searchBy: title,
   }
-
+  
   onClickEnterButton = (event) => {
     if (event.keyCode === 13) {
-      this.props.onClickSearchButton(this.state.searchValue);
+      this.onClickSearchButton();
     }
   }
   
   onInputChangeHandler = (event) => {
+    console.log('onInputChangeHandler');
     this.setState({
       searchValue: event.target.value,
     });
   }
 
-  onClickFilterButton = (event) => {
-    this.setState({ searchBy: event.target.value});
+  onClickSearchByButton = (event) => {
+    console.log('onClickSearchByButton');
+    this.props.setSearchBy(event.target.value);
+  }
+
+  onClickSearchButton = () => {
+    this.props.setSearchValue(this.state.searchValue);
+    this.props.resetOffset();
+    this.props.loadMovies();
+  }
+
+  onBackButton = () => {
+    this.props.resetSelectedMovie();
+    this.props.loadMovies();
+    this.setState({ searchValue: this.props.searchValue});
   }
 
   render() {
-    const { 
+    const {
       selectedMovie,
-      onBackButton,
-      onClickSearchButton
+      searchBy,
+      loadMovies
     } = this.props;
-    
     return (
       <ErrorBoundary>
         {selectedMovie ? (
           <DescriptionHeader
             data={selectedMovie}
-            onClick={onBackButton}
+            onClick={this.onBackButton}
           />
         ):(
           <MainHeader
             onInputChange={this.onInputChangeHandler}
             onClickEnterButton={this.onClickEnterButton}
-            onClickSearchButton={()=>/*onClickSearchButton*/this.props.loadMovies(this.state.searchValue, this.state.searchBy)}
-            onClickFilterButton={this.onClickFilterButton}
-            searchBy={this.state.searchBy}
-            onSearchButton={this.props.loadMovies}
+            onClickSearchButton={this.onClickSearchButton}
+            onClickSearchByButton={this.onClickSearchByButton}
+            searchBy={searchBy}
+            onSearchButton={loadMovies}
+            searchValue={this.state.searchValue}
           />
         )}
       </ErrorBoundary>
@@ -58,25 +74,34 @@ class Header extends React.Component {
   }
 }
 
-
 Header.propTypes = {
+  searchResult: PropTypes.array,
+  searchBy: PropTypes.string,
   selectedMovie: PropTypes.object,
-  onBackButton: PropTypes.func,
-  onClickSearchButton: PropTypes.func,
-  loadMovies: PropTypes.func
+  searchValue: PropTypes.string,
+  loadMovies: PropTypes.func,
+  setSearchValue: PropTypes.func,
+  setSearchBy: PropTypes.func,
+  resetSelectedMovie: PropTypes.func,
+  resetOffset: PropTypes.func
 }
 
 function mapStateToProps(state) {
   return { 
-    searchResult: state.loadedMovies.moviesList
+    searchResult: state.loadedMovies.moviesList,
+    searchBy: apiParams.getKeyByValue(state.searchParams.searchBy),
+    selectedMovie: state.selectedMovie.data,
+    searchValue: state.searchParams.searchValue
   }
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    loadMovies: (searchValue, searchBy) => {
-      dispatch(loadSearchedMovies(searchValue, searchBy))
-    }
+    loadMovies: () => dispatch(loadSearchedMovies()),
+    setSearchValue: (searchValue) => dispatch(setSearchValue(searchValue)),
+    setSearchBy: (searchBy) => dispatch(setSearchBy(searchBy)),
+    resetSelectedMovie: () => dispatch(resetSelectedMovie()),
+    resetOffset: () => dispatch(resetOffset())
   }
 }
 

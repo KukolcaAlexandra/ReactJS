@@ -12,10 +12,11 @@ function MainHeader (props) {
         onChangeHandler={props.onInputChange}
         onClickHandler={props.onClickEnterButton}
         placeholder='Search'
+        value={props.searchValue}
       />
       <SearchBar
         onClickSearchButton={props.onClickSearchButton}
-        onClickFilterButton={props.onClickFilterButton}
+        onClickSearchByButton={props.onClickSearchByButton}
         searchBy={props.searchBy}
         onSearchButton={props.onSearchButton}
       />
@@ -27,7 +28,7 @@ MainHeader.propTypes = {
   onInputChange: PropTypes.func,
   onClickEnterButton: PropTypes.func,
   onClickSearchButton: PropTypes.func,
-  onClickFilterButton: PropTypes.func,
+  onClickSearchByButton: PropTypes.func,
   searchBy: PropTypes.string,
   onSearchButton: PropTypes.func,
 }

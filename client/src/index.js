@@ -6,7 +6,8 @@ import store from './store/configureStore';
 
 const rootElement = document.getElementById("root");
 rootElement.style.height = '100%';
-
+console.log('initial state');
+console.log(store.getState());
 ReactDOM.render(
   <Provider store={store}>
     <App/>

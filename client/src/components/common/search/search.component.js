@@ -1,13 +1,19 @@
 import React from 'react';
 
-export default function Input(props) {
-  return (
-    <input
-      type="text"
-      name="input"
-      placeholder={props.placeholder}
-      onChange={props.onChangeHandler}
-      onKeyDown={props.onClickHandler}
-    />  
-  );
+class Input extends React.Component {
+
+  render() {
+    return (
+      <input
+        type="text"
+        name="input"
+        placeholder={this.props.placeholder}
+        onChange={this.props.onChangeHandler}
+        onKeyDown={this.props.onClickHandler}
+        value={this.props.value}
+      />  
+    );
+  }
 }
+
+export default Input;

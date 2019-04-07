@@ -1,6 +1,15 @@
-export function getMovies (searchValue, searchBy, sortBy) {
+export function getMovies (searchValue, searchBy, sortBy, offset) {
   
-  const url = `https://reactjs-cdp.herokuapp.com/movies?sortBy=${sortBy.toLowerCase()}&sortOrder=desc&search=${searchValue.toLowerCase()}&searchBy=${searchBy.toLowerCase()}&offset=0`;
+  const url = `https://reactjs-cdp.herokuapp.com/movies?sortBy=${sortBy}&sortOrder=desc&search=${searchValue}&searchBy=${searchBy}&offset=${offset}&limit=9`;
+  console.log(url);
+  return fetch(url)
+    .then((res) => res.json())
+    .catch(error => error);
+};
+
+export function getMovieById (id) {
+  
+  const url = `https://reactjs-cdp.herokuapp.com/movies/${id}`;
   
   return fetch(url)
     .then((res) => res.json())
