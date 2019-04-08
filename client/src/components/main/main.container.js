@@ -6,7 +6,7 @@ import { apiParams } from '../../consts';
 import SortBar from './sortBar/sortBar.component';
 import Button from '../../components/common/button/button.component';
 import { setSortBy } from '../../actions/searchActions';
-import { loadSearchedMovies, loadMovieById } from '../../actions/movieActions';
+import { loadMovies, loadMovieById } from '../../actions/movieActions';
 import { loadMore } from '../../actions/loadMoreActions';
 import { increaseOffset } from '../../actions/offsetActions';
 import styles from './main.css';
@@ -77,7 +77,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     setSortBy: (sortBy) => dispatch(setSortBy(sortBy)),
-    loadMovies: () => dispatch(loadSearchedMovies()),
+    loadMovies: () => dispatch(loadMovies()),
     loadMovieById: (id) => dispatch(loadMovieById(id)),
     increaseOffset: () => dispatch(increaseOffset()),
     loadMore: () => dispatch(loadMore()),

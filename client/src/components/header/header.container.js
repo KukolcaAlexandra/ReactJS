@@ -5,13 +5,12 @@ import ErrorBoundary from '../common/errorBoundary/errorBoundary.component';
 import MainHeader from './mainHeader/mainHeader.component';
 import DescriptionHeader from './descriptionHeader/descriptionHeader.component';
 import { apiParams } from '../../consts';
-import { loadSearchedMovies } from '../../actions/movieActions';
+import { loadMovies } from '../../actions/movieActions';
 import { resetOffset } from '../../actions/offsetActions';
 import { resetSelectedMovie } from '../../actions/selectedMovieActions';
 import { setSearchValue, setSearchBy } from '../../actions/searchActions';
-import { store } from '../../store/index';
 
-class Header extends React.Component {
+export class Header extends React.Component {
 
   onClickEnterButton = (event) => {
     if (event.keyCode === 13) {
@@ -20,12 +19,10 @@ class Header extends React.Component {
   }
   
   onInputChangeHandler = (event) => {
-    console.log('onInputChangeHandler');
     this.props.setSearchValue(event.target.value);
   }
 
   onClickSearchByButton = (event) => {
-    console.log('onClickSearchByButton');
     this.props.setSearchBy(event.target.value);
   }
 
@@ -92,7 +89,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    loadMovies: () => dispatch(loadSearchedMovies()),
+    loadMovies: () => dispatch(loadMovies()),
     setSearchValue: (searchValue) => dispatch(setSearchValue(searchValue)),
     setSearchBy: (searchBy) => dispatch(setSearchBy(searchBy)),
     resetSelectedMovie: () => dispatch(resetSelectedMovie()),

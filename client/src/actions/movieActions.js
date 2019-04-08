@@ -8,17 +8,14 @@ import { resetOffset } from './offsetActions';
 import { genre, apiParams } from '../consts';
 
 export function loadMoviesSuccess(movies) {
-	console.log('loadMoviesSuccess');
   return {type: LOAD_MOVIES_SUCCESS, payload: movies};
 }
 
 export function loadMoviesError(error) {
-	console.log('loadMoviesError');
   return {type: LOAD_MOVIES_ERROR, error};
 }
 
-export function loadSearchedMovies(searchValueParam, searchByParam) {
-	console.log('loadSearchedMovies');
+export function loadMovies(searchValueParam, searchByParam) {
   return function(dispatch, getState) {
 		dispatch(resetOffset());
 		const store = getState();
@@ -37,19 +34,18 @@ export function loadSearchedMovies(searchValueParam, searchByParam) {
 }
 
 export function loadMovieByIdSuccess(data) {
-	console.log('loadSelectedMovieSuccess');
   return {type: LOAD_MOVIE_BY_ID_SUCCESS, payload: data};
 }
 
 export function loadMovieById(id) {
-	console.log('loadMovieById');
-  return function(dispatch) {
+  return function(dispatch, getState) {
 		return getMovieById(id)
 			.then(data => {
 					dispatch(loadMovieByIdSuccess(data));
-					const searchValue = data.genres[0];
+					const store = getState();
+					const searchValue = store.selectedMovie.data.genres[0];
 					const searchBy = apiParams[genre];
-					dispatch(loadSearchedMovies(searchValue, searchBy));
+					dispatch(loadMovies(searchValue, searchBy));
 				}, error => {
 					dispatch(loadMoviesError(error));
 				}

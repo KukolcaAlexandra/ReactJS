@@ -8,18 +8,15 @@ const initialState = {
 }
 
 export default function searchReducer(state = initialState, action) {
-  console.log('searchReduce');
+  
   switch (action.type) {
 		case SET_SEARCH_VALUE:
-      console.log('SET_SEARCH_VALUE');
       return { ...state, searchValue: action.payload }
       
     case SET_SEARCH_BY:
-			console.log('SET_SEARCH_BY');
       return { ...state, searchBy: action.payload }
       
     case SET_SORT_BY:
-			console.log('SET_SORT_BY');
       return { ...state, sortBy: action.payload }
       
     default:

@@ -1,9 +1,10 @@
 export function getMovies (searchValue, searchBy, sortBy, offset) {
   
   const url = `https://reactjs-cdp.herokuapp.com/movies?sortBy=${sortBy}&sortOrder=desc&search=${searchValue}&searchBy=${searchBy}&offset=${offset}&limit=9`;
-  console.log(url);
   return fetch(url)
-    .then((res) => res.json())
+    .then((res) => {
+      return res.json()
+    })
     .catch(error => error);
 };
 

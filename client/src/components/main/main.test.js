@@ -36,7 +36,7 @@ describe('Main component', () => {
     expect(component).toMatchSnapshot();
   });   
   
-  it('should set state to "rating" after onChangeSortBy', () => {
+  /*it('should set state to "rating" after onChangeSortBy', () => {
 
     const wrapper = shallow(<Main
       selectedMovie={selectedMovie}
@@ -52,9 +52,9 @@ describe('Main component', () => {
     }
     instance.onChangeSortBy(event);
     expect(wrapper.state('sortBy')).toBe(sortBy);
-  });
+  });*/
 
-  it('should set state to "release date" after onChangeSortBy', () => {
+  /*it('should set state to "release date" after onChangeSortBy', () => {
 
     const wrapper = shallow(<Main
       selectedMovie={selectedMovie}
@@ -70,5 +70,5 @@ describe('Main component', () => {
     }
     instance.onChangeSortBy(event);
     expect(wrapper.state('sortBy')).toBe(sortBy);
-  });
+  });*/
 })

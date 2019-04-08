@@ -2,12 +2,10 @@ import { LOAD_MORE_SUCCESS } from './actionTypes';
 import { getMovies } from '../api/api-requests';
 
 export function loadMoreSuccess(movies) {
-	console.log('loadMoviesSuccess');
   return {type: LOAD_MORE_SUCCESS, payload: movies};
 }
 
 export function loadMore() {
-	console.log('loadMore');
   return function(dispatch, getState) {
 		const store = getState();
 		const searchValue = store.searchParams.searchValue;
