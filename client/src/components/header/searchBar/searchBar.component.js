@@ -11,16 +11,16 @@ function SearchBar(props) {
       <h2>{'search by'.toUpperCase()}</h2>
       {props.searchBy === title ? 
         (
-          <Button title={title.toUpperCase()} onClick={props.onClickSearchByButton} size="small" pressed={true}/>
+          <Button title={title} onClick={props.onClickSearchByButton} size="small" pressed={true}/>
         ) : (
-          <Button title={title.toUpperCase()} onClick={props.onClickSearchByButton} size="small"/>
+          <Button title={title} onClick={props.onClickSearchByButton} size="small"/>
         )
       }
       {props.searchBy === genre ? 
         (
-          <Button title={genre.toUpperCase()} onClick={props.onClickSearchByButton} size="small" pressed={true}/>
+          <Button title={genre} onClick={props.onClickSearchByButton} size="small" pressed={true}/>
         ) : (
-          <Button title={genre.toUpperCase()} onClick={props.onClickSearchByButton} size="small"/>
+          <Button title={genre} onClick={props.onClickSearchByButton} size="small"/>
         )
       }
       <Button title="SEARCH" onClick={props.onClickSearchButton} size="big"/>

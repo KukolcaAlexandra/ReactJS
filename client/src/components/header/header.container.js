@@ -27,14 +27,13 @@ export class Header extends React.Component {
   }
 
   onClickSearchButton = () => {
-    this.props.resetOffset();
+    //this.props.resetOffset();
     this.props.loadMovies();
   }
 
   onBackButton = () => {
     this.props.resetSelectedMovie();
     this.props.loadMovies();
-    this.setState({ searchValue: this.props.searchValue});
   }
 
   render() {
