@@ -40,20 +40,6 @@ describe('Header component', () => {
     expect(component).toMatchSnapshot();
   });  
 
-  /*it('should be render correctly', () => {
-    selectedMovie = null;
-    const component = shallow(
-      <Header
-        selectedMovie={selectedMovie}
-        onBackButton={onBackButton}
-        onClickFilterButton={onClickFilterButton}
-        onClickSearchButton={onClickSearchButton}
-        searchBy = {searchBy}
-      />
-    );
-    expect(component).toMatchSnapshot();
-  });  */
-  
   it('should be onClickEnterButton call', () => {
     const component = mount(
       <Header
@@ -71,70 +57,14 @@ describe('Header component', () => {
     const event = {
       'keyCode': 13,
     }
+    //const spy = jest.spyOn(instance, 'onClickEnterButton');
+    //instance.onClickEnterButton(event);
     //console.log(instance);
     //const spy = jest.spyOn(ErrorBoundary.prototype, 'componentDidCatch');
     //instance.onClickSearchButton = jest.fn();
     //instance.onClickEnterButton(event);
     //const onClickEnterButton = jest.fn();
-    //expect(onClickEnterButton).toHaveBeenCalled();
+    //expect(spy).toHaveBeenCalled();
   });
-
-  /*it('should be onClickSearchButton call', () => {
-    const component = shallow(
-      <Header
-        selectedMovie={selectedMovie}
-        onBackButton={onBackButton}
-        onClickFilterButton={onClickFilterButton}
-        onClickSearchButton={onClickSearchButton}
-        searchBy = {searchBy}
-      />
-    );
-    const instance = component.instance();
-    const event = {
-      'keyCode': 13,
-    }
-    instance.onClickEnterButton(event);
-    expect(onClickSearchButton).toHaveBeenCalled();
-  });*/
-
-  /*it('should set state "searchBy" to genre after onClickFilterButton', () => {
-    const component = shallow(
-      <Header
-        selectedMovie={selectedMovie}
-        onBackButton={onBackButton}
-        onClickFilterButton={onClickFilterButton}
-        onClickSearchButton={onClickSearchButton}
-        searchBy = {searchBy}
-      />
-    );
-    const instance = component.instance();
-    const event = {
-      'target': {
-        'value': 'genre',
-      }
-    }
-    instance.onClickFilterButton(event);
-    expect(component.state('searchBy')).toBe('genre');
-  });*/
-
-  /*it('should set State to input value after onInputChangeHandler', () => {
-    const component = shallow(
-      <Header
-        selectedMovie={selectedMovie}
-        onBackButton={onBackButton}
-        onClickFilterButton={onClickFilterButton}
-        onClickSearchButton={onClickSearchButton}
-        searchBy = {searchBy}
-      />
-    );
-    const instance = component.instance();
-    const event = {
-      'target': {
-        'value': 'adv',
-      }
-    }
-    instance.onInputChangeHandler(event);
-    expect(component.state('searchValue')).toBe('adv');
-  });*/
 
 })

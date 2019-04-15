@@ -11,7 +11,7 @@ import { loadMore } from '../../actions/loadMoreActions';
 import { increaseOffset } from '../../actions/offsetActions';
 import styles from './main.css';
 
-class Main extends React.Component {
+export class Main extends React.Component {
 
   onChangeSortBy = (event) => {
     this.props.setSortBy(event.target.innerText);
