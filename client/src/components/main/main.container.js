@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import MoviesList from './moviesList/moviesList.component';
 import { apiParams } from '../../consts';
 import SortBar from './sortBar/sortBar.component';
@@ -29,6 +30,8 @@ export class Main extends React.Component {
   }
 
   render() {
+    console.log('MAIN');
+    console.log(this.props);
     return (
       <div className={styles.container}>
         
@@ -63,6 +66,9 @@ Main.propTypes = {
   loadMovieById: PropTypes.func,
   increaseOffset: PropTypes.func,
   loadMore: PropTypes.func,
+  match: PropTypes.object.isRequired,
+  location: PropTypes.object.isRequired,
+  history: PropTypes.object.isRequired
 }
 
 function mapStateToProps(state) {
@@ -84,4 +90,4 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Main);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Main));
