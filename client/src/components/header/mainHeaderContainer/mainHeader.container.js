@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import ErrorBoundary from '../../common/errorBoundary/errorBoundary.component';
 import MainHeader from '../mainHeader/mainHeader.component';
-//import DescriptionHeader from './descriptionHeader/descriptionHeader.component';
 import { apiParams } from '../../../consts';
 import { loadMovies } from '../../../actions/movieActions';
 import { resetOffset } from '../../../actions/offsetActions';
@@ -12,6 +11,15 @@ import { resetSelectedMovie } from '../../../actions/selectedMovieActions';
 import { setSearchValue, setSearchBy } from '../../../actions/searchActions';
 
 export class MainHeaderContainer extends React.Component {
+
+  componentDidMount() {
+    if (this.props.match.path === '/') {
+      this.props.setSearchValue('');
+    } else {
+        this.props.setSearchValue(this.props.match.params.query);  
+    }
+    this.props.loadMovies();
+  }
 
   onClickEnterButton = (event) => {
     if (event.keyCode === 13) {
@@ -28,25 +36,16 @@ export class MainHeaderContainer extends React.Component {
   }
 
   onClickSearchButton = () => {
-    //this.props.resetOffset();
-    console.log('onClickSearchButton');
     this.props.loadMovies();
-    this.props.history.push('/search/quer');
+    this.props.history.push(`/search/${this.props.searchValue}`);
   }
-
-  /*onBackButton = () => {
-    this.props.resetSelectedMovie();
-    this.props.loadMovies();
-  }*/
 
   render() {
     const {
-      //selectedMovie,
       searchBy,
       loadMovies
     } = this.props;
-    console.log('Main Header');
-    console.log(this.props);
+  
     return (
       <ErrorBoundary>
         <MainHeader
@@ -66,12 +65,10 @@ export class MainHeaderContainer extends React.Component {
 MainHeaderContainer.propTypes = {
   searchResult: PropTypes.array,
   searchBy: PropTypes.string,
-  //selectedMovie: PropTypes.object,
   searchValue: PropTypes.string,
   loadMovies: PropTypes.func,
   setSearchValue: PropTypes.func,
   setSearchBy: PropTypes.func,
-  //resetSelectedMovie: PropTypes.func,
   resetOffset: PropTypes.func,
   match: PropTypes.object.isRequired,
   location: PropTypes.object.isRequired,
@@ -82,7 +79,6 @@ function mapStateToProps(state) {
   return { 
     searchResult: state.loadedMovies.moviesList,
     searchBy: apiParams.getKeyByValue(state.searchParams.searchBy),
-    //selectedMovie: state.selectedMovie.data,
     searchValue: state.searchParams.searchValue
   }
 }

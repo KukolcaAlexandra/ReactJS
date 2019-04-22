@@ -13,6 +13,12 @@ import { increaseOffset } from '../../actions/offsetActions';
 import styles from './main.css';
 
 export class Main extends React.Component {
+  
+  componentWillMount() {
+    if (this.props.match.path === '/film/:id') {
+      this.props.loadMovieById(this.props.match.params.id);
+    }
+  }
 
   onChangeSortBy = (event) => {
     this.props.setSortBy(event.target.innerText);
@@ -21,7 +27,7 @@ export class Main extends React.Component {
 
   onMovieClick = (id) => {
     window.scrollTo(0, 0);
-    this.props.loadMovieById(id);
+    this.props.history.push(`/film/${id}`);
   }
 
   onClickLoadMore = () => {
@@ -30,8 +36,6 @@ export class Main extends React.Component {
   }
 
   render() {
-    console.log('MAIN');
-    console.log(this.props);
     return (
       <div className={styles.container}>
         
