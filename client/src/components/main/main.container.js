@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import MoviesList from './moviesList/moviesList.component';
 import { apiParams } from '../../consts';
 import SortBar from './sortBar/sortBar.component';
@@ -12,6 +13,12 @@ import { increaseOffset } from '../../actions/offsetActions';
 import styles from './main.css';
 
 export class Main extends React.Component {
+  
+  componentWillMount() {
+    if (this.props.match.path === '/film/:id') {
+      this.props.loadMovieById(this.props.match.params.id);
+    }
+  }
 
   onChangeSortBy = (event) => {
     this.props.setSortBy(event.target.innerText);
@@ -20,7 +27,7 @@ export class Main extends React.Component {
 
   onMovieClick = (id) => {
     window.scrollTo(0, 0);
-    this.props.loadMovieById(id);
+    this.props.history.push(`/film/${id}`);
   }
 
   onClickLoadMore = () => {
@@ -63,6 +70,9 @@ Main.propTypes = {
   loadMovieById: PropTypes.func,
   increaseOffset: PropTypes.func,
   loadMore: PropTypes.func,
+  match: PropTypes.object.isRequired,
+  location: PropTypes.object.isRequired,
+  history: PropTypes.object.isRequired
 }
 
 function mapStateToProps(state) {
@@ -84,4 +94,4 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Main);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Main));

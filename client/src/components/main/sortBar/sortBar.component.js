@@ -25,7 +25,7 @@ export default function SortBar(props) {
   };
 
   const renderGenreItem = () => (
-    <div  className={styles.item}>Films by {props.selectedMovie.genres[0]} genre</div>
+    <div  className={styles.item}>Films by {props.selectedMovie.genres && props.selectedMovie.genres[0]} genre</div>
   );
 
   const sortFilter = () => (
@@ -36,6 +36,7 @@ export default function SortBar(props) {
       { renderItem('rating', props.sortBy === rating ? selectedStyle : unselectedStyle, props.onChangeSortBy) }
     </>
   );
+
   return (
     <ErrorBoundary>
       <div className={styles.sortBar}>

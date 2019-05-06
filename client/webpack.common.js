@@ -7,8 +7,11 @@ module.exports = {
   entry: './src/index.js',
   
   output: {
-    filename: 'bundle.js',
-    path: path.join(__dirname, 'built'),
+    //path: path.join(__dirname, 'built'),
+    path: path.resolve(__dirname, '..', 'build'),
+    filename: '[name].js',
+    chunkFilename: '[name].js',
+    publicPath: '/'
   },
 
   resolve: {

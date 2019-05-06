@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import styles from './moviesList.css';
 import MovieBlock from './movieBlock/movieBlock.component';
 import ErrorBoundary from '../../common/errorBoundary/errorBoundary.component';
+import NoFilmFound from '../noFilmFound/noFilmFound.component';
 
 function MoviesList(props) {
   const { data, onMovieClick } = props;
@@ -13,9 +14,7 @@ function MoviesList(props) {
   return (
     <ErrorBoundary>
       { !data || data.length <= 0 ? (
-          <div className={styles.center}>
-            <p className={styles.noFound}>No films found</p>
-          </div>
+          <NoFilmFound />
         ) : (
           <div className={styles.main}>
             {listItems}
