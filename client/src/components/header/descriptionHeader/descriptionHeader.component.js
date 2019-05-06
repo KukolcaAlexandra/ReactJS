@@ -1,8 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styles from '../header.css';
 import Button from '../../common/button/button.component';
 
-export default function DescriptionHeader (props) {
+function DescriptionHeader (props) {
   
   const release_date = new Date(props.data.release_date);
   return (
@@ -28,3 +29,10 @@ export default function DescriptionHeader (props) {
     </div>
   )
 }
+
+DescriptionHeader.propTypes = {
+  data: PropTypes.object,
+  onClick: PropTypes.func
+}
+
+export default DescriptionHeader;

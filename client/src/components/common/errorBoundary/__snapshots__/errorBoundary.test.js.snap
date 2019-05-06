@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ErrorBoundary component ErrorBoundary component should be render correctly 1`] = `ShallowWrapper {}`;
+
+exports[`ErrorBoundary component should catch errors with componentDidCatch 1`] = `ReactWrapper {}`;

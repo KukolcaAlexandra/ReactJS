@@ -1,9 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Button from '../../common/button/button.component';
 import { title, genre } from '../../../consts';
-import styles from './searchBar';
+import styles from './searchBar.css';
 
-export default function SearchBar(props) {
+function SearchBar(props) {
 
   return (
     <div className={styles.filterBar}>
@@ -26,3 +27,11 @@ export default function SearchBar(props) {
     </div>  
   );
 }
+
+SearchBar.propTypes = {
+  onClickSearchButton: PropTypes.func,
+  onClickFilterButton: PropTypes.func,
+  searchBy: PropTypes.string
+}
+
+export default SearchBar;
