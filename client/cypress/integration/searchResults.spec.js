@@ -21,7 +21,7 @@ describe('Check search results by title', () => {
   })
 })
 
-describe('Check sorting by rating', () => {
+/*describe('Check sorting by rating', () => {
 
   it('Click on rating', () => {
     cy.get('div[class*=sortBar]:last-child')
@@ -33,7 +33,7 @@ describe('Check sorting by rating', () => {
       .contains('Zootopia')
   })
 
-})
+})*/
 
 describe('Check empty search input', () => {
 
@@ -48,10 +48,17 @@ describe('Check empty search input', () => {
       .click()
   })
 
-  it('Check the results', () => {
+  /*it('Check the results', () => {
     cy.get('div[class^=moviesList] > p')
       .contains('No films found')
+  })*/
+
+  it('Check the results', () => {
+    cy.get('div[class^=moviesList] > div')
+      .its('length')
+      .should('be', 3000)
   })
+  
 })
   
 describe('Check search by genre', () => {

@@ -7,7 +7,7 @@ function MovieBlock(props) {
   const date = new Date(props.data.release_date);
 
   return (
-    <div className={styles.container} onClick={()=>props.onMovieClick(props.data)}>
+    <div className={styles.container} onClick={()=>props.onMovieClick(props.data.id)}>
       <img className={styles.image} src={props.data.poster_path}/>
       <div className={styles.titleBlock}>
         <h3>{props.data.title}</h3>

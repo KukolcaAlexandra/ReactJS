@@ -11,6 +11,8 @@ export default function Button(props) {
     className = styles.medium;
   } else if (props.size === 'big') {
     className = styles.big;
+  } else if (props.size === 'loadMore') {
+    className = styles.loadMore;
   } 
   
   if (props.pressed) {
