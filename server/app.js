@@ -1,10 +1,24 @@
 const express = require('express');
+
 const app = express();
 
-app.get('/', function (req, res) {
-  res.send('Hello World!');
-});
+if (process.env.NODE_ENV === 'development') {
+  const webpack = require('webpack');
+  const webpackDevMiddleware = require('webpack-dev-middleware');
+  const webpackHotMiddleware = require('webpack-hot-middleware');
+  const webpackHotServerMiddleware = require('webpack-hot-server-middleware');
+  const webpackConfig = require('../webpack');
 
-app.listen(3000, function () {
-  console.log('Example app listening on port 3000!');
-});
+  const compiler = webpack(webpackConfig);
+
+  app.use(webpackDevMiddleware(compiler));
+  app.use(webpackHotMiddleware(compiler.compilers.find(c => c.name === 'client')));
+  app.use(webpackHotServerMiddleware(compiler));
+} else {
+  const serverRenderer = require('../public/js/serverRenderer').default;
+
+  app.use(express.static('public'));
+  app.use(serverRenderer());
+}
+
+module.exports = app;

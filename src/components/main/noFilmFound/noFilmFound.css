@@ -1,0 +1,13 @@
+.center {
+  margin: auto;
+  min-width: 50px;
+  min-height: 100%;
+  width: 90%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.noFound {
+  font-size: 40px;
+}

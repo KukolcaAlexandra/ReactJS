@@ -1,0 +1,94 @@
+import { call, put, all, takeLatest } from 'redux-saga/effects';
+
+// Actions
+const FETCH_USERS = 'users/FETCH';
+const FETCH_USER_BY_ID = 'users/FETCH_BY_ID';
+const UPDATE = 'users/UPDATE';
+const UPDATE_CURRENT_USER = 'users/UPDATE_CURRENT_USER';
+
+// Action Creators
+export const fetchUsers = () => ({
+  type: FETCH_USERS,
+});
+export const fetchUserById = userId => ({
+  type: FETCH_USER_BY_ID,
+  payload: userId,
+});
+
+export const updateUsers = users => ({
+  type: UPDATE,
+  payload: users,
+});
+
+export const updateCurrentUser = user => ({
+  type: UPDATE_CURRENT_USER,
+  payload: user,
+});
+
+// Sagas
+export function* fetchUsersAsync() {
+  console.log('fetchUsersAsync');
+  const response = yield call(fetch, 'https://api.github.com/repos/facebook/react/contributors');
+  console.log(response);
+  const users = yield response.json();
+  console.log(users);
+
+  yield put(updateUsers(users));
+}
+export function* watchFetchUsers() {
+  console.log('watchFetchUsers');
+  yield takeLatest(FETCH_USERS, fetchUsersAsync);
+}
+
+export function* fetchUserByIdAsync(action) {
+  console.log('fetchUserByIdAsync');
+  const response = yield call(fetch, `https://api.github.com/users/${action.payload}/repos`);
+  const user = yield response.json();
+
+  yield put(updateCurrentUser(user));
+}
+export function* watchFetchUserById() {
+  yield takeLatest(FETCH_USER_BY_ID, fetchUserByIdAsync);
+}
+
+// Users Saga
+export function* usersSaga() {
+  console.log('usersSaga');
+  yield all([
+    watchFetchUsers(),
+    watchFetchUserById(),
+  ]);
+}
+
+// Initial state
+const INITIAL_STATE = {
+  loading: false,
+  items: [],
+};
+
+// Reducer
+export const usersReduces = (state = INITIAL_STATE, action = {}) => {
+  console.log('usersReduces');
+  switch (action.type) {
+    case FETCH_USERS:
+    case FETCH_USER_BY_ID:
+      return {
+        ...state,
+        loading: true,
+      };
+    case UPDATE:
+      return {
+        ...state,
+        loading: false,
+        items: action.payload,
+      };
+    case UPDATE_CURRENT_USER:
+      return {
+        ...state,
+        loading: false,
+        current: action.payload,
+      };
+    default:
+      return state;
+  }
+};

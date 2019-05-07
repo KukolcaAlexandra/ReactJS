@@ -1,0 +1,30 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: content-box; 
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.main {
+  min-height: 100%;
+  display: flex;
+  margin-bottom: auto;
+}
+
+.mainContent {
+  height: 700px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
