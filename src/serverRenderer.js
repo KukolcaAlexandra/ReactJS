@@ -29,10 +29,7 @@ function renderHTML(html, preloadedState) {
 export default function serverRenderer() {
   return (req, res) => {
     const store = configureStore();
-    // This context object contains the results of the render
     const context = {};
-    console.log('store');
-    console.log(store);
     const renderRoot = () => (
       <Root
         context={context}
@@ -44,8 +41,6 @@ export default function serverRenderer() {
 
     store.runSaga().done.then(() => {
       const htmlString = renderToString(renderRoot());
-      console.log(context.url);
-      // context.url will contain the URL to redirect to if a <Redirect> was used
       if (context.url) {
         res.writeHead(302, {
           Location: context.url,
@@ -55,14 +50,10 @@ export default function serverRenderer() {
       }
 
       const preloadedState = store.getState();
-      //console.log('preloadState!!!!');
-      //console.log(preloadedState);
       res.send(renderHTML(htmlString, preloadedState));
     });
 
-    // Do first render, starts initial actions.
     renderToString(renderRoot());
-    // When the first render is finished, send the END action to redux-saga.
     store.close();
   };
 }

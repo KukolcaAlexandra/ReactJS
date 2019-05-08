@@ -5,13 +5,6 @@ import PropTypes from 'prop-types';
 import { hot } from 'react-hot-loader';
 import { Route, Link, Switch, Redirect } from 'react-router-dom';
 import { Provider } from 'react-redux';
-
-import Hello from './components/Hello';
-import HomePage from './pages/HomePage';
-import UsersPage from './pages/UsersPage';
-//import MoviesPage from './pages/MainPage';
-import UserPage from './pages/UserPage';
-
 import MainHeaderContainer from './components/header/mainHeaderContainer/mainHeader.container';
 import SortBar from './components/main/sortBar/sortBar.component';
 import NoFilmFound from './components/main/noFilmFound/noFilmFound.component';
@@ -46,23 +39,23 @@ function MoviePage() {
   )
 }
 
+function NotFoundRoute() {
+  return <h2>Not Found</h2>;
+}
+
 const Root = ({
   Router, location, context, store,
 }) => (
   <Provider store={store}>
     <Router location={location} context={context}>
-      <div>
-        <Switch>
-          <Route exact path="/" component={MainPage} />
-          <Route path="/users/:userId" component={UserPage} />
-          <Route path="/users" component={UsersPage} />
-          <Route path="/search/:query" component={MoviesPage} />
-          <Route path="/search" component={MoviesPage} />
-          <Route path="/film/:id" component={MoviePage} />
-          
-          <Redirect to="/" />
-        </Switch>
-      </div>
+      <Switch>
+        <Route exact path="/" component={MainPage} />
+        <Route path="/search/:query" component={MoviesPage} />
+        <Route path="/search" component={MoviesPage} />
+        <Route path="/film/:id" component={MoviePage} /> 
+        <Route exact path="/error" component={NotFoundRoute}/>
+        <Redirect from="*" to="/error" />
+      </Switch>
     </Router>
   </Provider>
 );

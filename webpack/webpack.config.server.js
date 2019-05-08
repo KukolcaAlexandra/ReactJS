@@ -18,7 +18,7 @@ module.exports = merge(common, {
         include: /src/,
         use: [
           {
-            loader: 'css-loader/locals', // It doesn't embed CSS but only exports the identifier mappings.
+            loader: 'css-loader/locals',
             options: {
               modules: true,
               localIdentName: '[name]-[hash:5]',

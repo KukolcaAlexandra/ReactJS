@@ -38,12 +38,6 @@ module.exports = merge(common, {
   plugins: [
     !isDevMod && new CleanWebpackPlugin('./public', { root: path.resolve(__dirname, '../') }),
     isDevMod && new webpack.HotModuleReplacementPlugin(),
-    /**
-     * This plugin extract CSS into separate files.
-     * It creates a CSS file per JS file which contains CSS.
-     * It supports On-Demand-Loading of CSS and SourceMaps.
-     * @link https://webpack.js.org/plugins/mini-css-extract-plugin/#minimizing-for-production
-     */
     new MiniCssExtractPlugin({
       filename: 'css/[name].css',
     }),

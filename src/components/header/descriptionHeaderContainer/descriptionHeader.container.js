@@ -4,21 +4,17 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import ErrorBoundary from '../../common/errorBoundary/errorBoundary.component';
 import DescriptionHeader from '../descriptionHeader/descriptionHeader.component';
-import { loadMovies } from '../../../actions/movieActions';
 import { resetSelectedMovie } from '../../../actions/selectedMovieActions';
 import { fetchMovieById } from '../../../modules/movies';
 
 export class DescriptionHeaderContainer extends React.Component {
 
   componentWillMount() {
-    console.log('componentWillMount');
-    console.log(this.props.movieId);
     this.props.fetchMovieById(this.props.movieId);
   }
 
   onBackButton = () => {
     this.props.resetSelectedMovie();
-    //this.props.loadMovies();
     this.props.history.goBack();
   }
 
@@ -56,7 +52,6 @@ function mapStateToProps(state, props) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    //loadMovies: () => dispatch(loadMovies()),
     resetSelectedMovie: () => dispatch(resetSelectedMovie()),
     fetchMovieById: (id) => dispatch(fetchMovieById(id))
   }
