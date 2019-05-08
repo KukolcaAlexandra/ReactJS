@@ -77,18 +77,3 @@ Root.defaultProps = {
 };
 
 export default hot(module)(Root);
-
-/*
-<Redirect from="*" to="/error" />
-*/
-
-/*
-<h1>Server Side Renderig</h1>
-  <Hello name="World" />
-    <ul>
-      <li><Link to="/">Home</Link></li>
-      <li><Link to="/users">Users</Link></li>
-      <li><Link to="/search">MoviesPage</Link></li>
-      <li><Link to="/film/:id">MoviePage</Link></li>
-    </ul>
-*/
