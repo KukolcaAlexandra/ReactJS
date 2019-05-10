@@ -1,0 +1,1 @@
+{"version":3,"file":"static/chunks/1.js","sources":["webpack:///./components/descriptionHeader.js"],"sourcesContent":["export default () => <p>Description Header</p>\n"],"mappings":";;;;;;;;;;;;;;AAAA;AAAA;AAAA;;;;A","sourceRoot":""}

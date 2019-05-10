@@ -1,0 +1,1 @@
+{"version":3,"file":"0.js","sources":["webpack:///./components/descriptionHeader.js"],"sourcesContent":["export default () => <p>Description Header</p>\n"],"mappings":";;;;;;;;;;;;;;;AAAA;AAAA;AAAA;;;;A","sourceRoot":""}
