@@ -9,7 +9,8 @@
     "test:watch": "npm test -- --watch",
     "cypress": "cypress open",
     "build": "webpack --config webpack.prod.js --progress",
-    "start": "webpack-dev-server --open --config webpack.dev.js --progress"
+    "start": "webpack-dev-server --open --config webpack.dev.js --progress",
+    "eslint": "eslint ./ --cache --ignore-pattern .gitignore --fix"
   },
   "jest": {
     "testPathIgnorePatterns": [
@@ -39,12 +40,19 @@
     "@babel/preset-env": "^7.4.2",
     "@babel/preset-react": "^7.0.0",
     "autoprefixer": "^9.5.0",
+    "babel-eslint": "^10.0.1",
     "babel-jest": "^24.5.0",
     "babel-loader": "^8.0.5",
     "clean-webpack-plugin": "^2.0.1",
     "css-loader": "^2.1.1",
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.11.2",
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-plugin-cypress": "^2.2.1",
+    "eslint-plugin-import": "^2.17.2",
+    "eslint-plugin-jsx-a11y": "^6.2.1",
+    "eslint-plugin-react": "^7.13.0",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "fetch-mock": "^7.3.1",
     "html-loader": "^0.5.5",
@@ -71,6 +79,7 @@
   "dependencies": {
     "@babel/plugin-syntax-throw-expressions": "^7.2.0",
     "cypress": "^3.2.0",
+    "expect": "^24.8.0",
     "prop-types": "^15.7.2",
     "react-redux": "^6.0.1",
     "react-router": "^4.4.0",

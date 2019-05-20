@@ -7,16 +7,15 @@ import MainHeader from '../mainHeader/mainHeader.component';
 import { apiParams } from '../../../consts';
 import { loadMovies } from '../../../actions/movieActions';
 import { resetOffset } from '../../../actions/offsetActions';
-import { resetSelectedMovie } from '../../../actions/selectedMovieActions';
+import resetSelectedMovie from '../../../actions/selectedMovieActions';
 import { setSearchValue, setSearchBy } from '../../../actions/searchActions';
 
-export class MainHeaderContainer extends React.Component {
-
+class MainHeaderContainer extends React.Component {
   componentDidMount() {
     if (this.props.match.path === '/') {
       this.props.setSearchValue('');
     } else {
-        this.props.setSearchValue(this.props.match.params.query);  
+      this.props.setSearchValue(this.props.match.params.query);
     }
     this.props.loadMovies();
   }
@@ -26,7 +25,7 @@ export class MainHeaderContainer extends React.Component {
       this.onClickSearchButton();
     }
   }
-  
+
   onInputChangeHandler = (event) => {
     this.props.setSearchValue(event.target.value);
   }
@@ -43,9 +42,8 @@ export class MainHeaderContainer extends React.Component {
   render() {
     const {
       searchBy,
-      loadMovies
     } = this.props;
-  
+
     return (
       <ErrorBoundary>
         <MainHeader
@@ -54,7 +52,7 @@ export class MainHeaderContainer extends React.Component {
           onClickSearchButton={this.onClickSearchButton}
           onClickSearchByButton={this.onClickSearchByButton}
           searchBy={searchBy}
-          onSearchButton={loadMovies}
+          onSearchButton={this.props.loadMovies}
           searchValue={this.props.searchValue}
         />
       </ErrorBoundary>
@@ -72,25 +70,25 @@ MainHeaderContainer.propTypes = {
   resetOffset: PropTypes.func,
   match: PropTypes.object.isRequired,
   location: PropTypes.object.isRequired,
-  history: PropTypes.object.isRequired
-}
+  history: PropTypes.object.isRequired,
+};
 
 function mapStateToProps(state) {
-  return { 
+  return {
     searchResult: state.loadedMovies.moviesList,
     searchBy: apiParams.getKeyByValue(state.searchParams.searchBy),
-    searchValue: state.searchParams.searchValue
-  }
+    searchValue: state.searchParams.searchValue,
+  };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
     loadMovies: () => dispatch(loadMovies()),
-    setSearchValue: (searchValue) => dispatch(setSearchValue(searchValue)),
-    setSearchBy: (searchBy) => dispatch(setSearchBy(searchBy)),
+    setSearchValue: searchValue => dispatch(setSearchValue(searchValue)),
+    setSearchBy: searchBy => dispatch(setSearchBy(searchBy)),
     resetSelectedMovie: () => dispatch(resetSelectedMovie()),
-    resetOffset: () => dispatch(resetOffset())
-  }
+    resetOffset: () => dispatch(resetOffset()),
+  };
 }
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(MainHeaderContainer));

@@ -1,25 +1,29 @@
 
-const filterByTitle = function(data, searchValue) {
+const filterByTitle = function (data, searchValue) {
   const dataString = data && data.title && data.title.toLowerCase();
-  return dataString.indexOf(searchValue.toLowerCase()) === -1 ? false : true;
-}
+  return dataString.indexOf(searchValue.toLowerCase()) !== -1;
+};
 
-const filterByGenre = function(data, searchValue) {
+const filterByGenre = function (data, searchValue) {
   const dataArray = data && data.genres;
   return dataArray.some((elem) => {
     const res = elem.toLowerCase().indexOf(searchValue.toLowerCase());
-    return res === -1 ? false : true;
+    return res !== -1;
   });
-}
+};
 
-const sortByDate = function(a, b) {
-  a = new Date(a.release_date);
-  b = new Date(b.release_date);
-  return a > b ? -1 : a < b ? 1 : 0;
-}
+const sortByDate = function (a, b) {
+  const firstDate = new Date(a.release_date);
+  const secondDate = new Date(b.release_date);
+  const cond = firstDate < secondDate ? 1 : 0;
+  return firstDate > secondDate ? -1 : cond;
+};
 
-const sortByRating = function(a, b) {
-  return a.vote_average > b.vote_average ? -1 : a.vote_average < b.vote_average ? 1 : 0;
-}
+const sortByRating = function (a, b) {
+  const cond = a.vote_average < b.vote_average ? 1 : 0;
+  return a.vote_average > b.vote_average ? -1 : cond;
+};
 
-export { filterByTitle, filterByGenre, sortByDate, sortByRating };
+export {
+  filterByTitle, filterByGenre, sortByDate, sortByRating,
+};

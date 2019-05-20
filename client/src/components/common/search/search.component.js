@@ -1,7 +1,6 @@
 import React from 'react';
 
 class Input extends React.Component {
-
   render() {
     return (
       <input
@@ -11,7 +10,7 @@ class Input extends React.Component {
         onChange={this.props.onChangeHandler}
         onKeyDown={this.props.onClickHandler}
         value={this.props.value}
-      />  
+      />
     );
   }
 }

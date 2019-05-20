@@ -1,25 +1,22 @@
 import React from 'react';
+import { shallow, mount } from 'enzyme';
 import ErrorBoundary from './errorBoundary.component';
-import {shallow, mount, configure} from 'enzyme';
 
 function ProblemChild() {
   throw new Error('Error thrown from problem child');
-  return <div>Error</div>;
 }
 
 describe('ErrorBoundary component', () => {
-  
   it('ErrorBoundary component should be render correctly', () => {
     const component = shallow(
       <ErrorBoundary>
         <div>some</div>
-      </ErrorBoundary>
-      );
-      expect(component).toMatchSnapshot();
+      </ErrorBoundary>,
+    );
+    expect(component).toMatchSnapshot();
   });
 
   it('should catch errors with componentDidCatch', () => {
-    const spy = jest.spyOn(ErrorBoundary.prototype, 'componentDidCatch');
     const component = mount(<ErrorBoundary><ProblemChild /></ErrorBoundary>);
     expect(ErrorBoundary.prototype.componentDidCatch).toHaveBeenCalled();
     expect(component).toMatchSnapshot();
@@ -32,5 +29,4 @@ describe('ErrorBoundary component', () => {
     component.find(Something).simulateError(error);
     expect(component.state('hasError')).toBeFalsy();
   });
-
-})
+});

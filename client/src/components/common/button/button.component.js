@@ -13,12 +13,12 @@ export default function Button(props) {
     className = styles.big;
   } else if (props.size === 'loadMore') {
     className = styles.loadMore;
-  } 
-  
+  }
+
   if (props.pressed) {
     classPressed = styles.pressed;
   }
-  
+
   return (
       <input
         className={[className, styles.button, classPressed].join(' ')}

@@ -7,17 +7,16 @@ import DescriptionHeader from './descriptionHeader/descriptionHeader.component';
 import { apiParams } from '../../consts';
 import { loadMovies } from '../../actions/movieActions';
 import { resetOffset } from '../../actions/offsetActions';
-import { resetSelectedMovie } from '../../actions/selectedMovieActions';
+import resetSelectedMovie from '../../actions/selectedMovieActions';
 import { setSearchValue, setSearchBy } from '../../actions/searchActions';
 
 export class Header extends React.Component {
-
   onClickEnterButton = (event) => {
     if (event.keyCode === 13) {
       this.onClickSearchButton();
     }
   }
-  
+
   onInputChangeHandler = (event) => {
     this.props.setSearchValue(event.target.value);
   }
@@ -27,7 +26,6 @@ export class Header extends React.Component {
   }
 
   onClickSearchButton = () => {
-    //this.props.resetOffset();
     this.props.loadMovies();
   }
 
@@ -40,7 +38,6 @@ export class Header extends React.Component {
     const {
       selectedMovie,
       searchBy,
-      loadMovies
     } = this.props;
     return (
       <ErrorBoundary>
@@ -49,14 +46,14 @@ export class Header extends React.Component {
             data={selectedMovie}
             onClick={this.onBackButton}
           />
-        ):(
+        ) : (
           <MainHeader
             onInputChange={this.onInputChangeHandler}
             onClickEnterButton={this.onClickEnterButton}
             onClickSearchButton={this.onClickSearchButton}
             onClickSearchByButton={this.onClickSearchByButton}
             searchBy={searchBy}
-            onSearchButton={loadMovies}
+            onSearchButton={this.props.loadMovies}
             searchValue={this.props.searchValue}
           />
         )}
@@ -74,26 +71,26 @@ Header.propTypes = {
   setSearchValue: PropTypes.func,
   setSearchBy: PropTypes.func,
   resetSelectedMovie: PropTypes.func,
-  resetOffset: PropTypes.func
-}
+  resetOffset: PropTypes.func,
+};
 
 function mapStateToProps(state) {
-  return { 
+  return {
     searchResult: state.loadedMovies.moviesList,
     searchBy: apiParams.getKeyByValue(state.searchParams.searchBy),
     selectedMovie: state.selectedMovie.data,
-    searchValue: state.searchParams.searchValue
-  }
+    searchValue: state.searchParams.searchValue,
+  };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
     loadMovies: () => dispatch(loadMovies()),
-    setSearchValue: (searchValue) => dispatch(setSearchValue(searchValue)),
-    setSearchBy: (searchBy) => dispatch(setSearchBy(searchBy)),
+    setSearchValue: searchValue => dispatch(setSearchValue(searchValue)),
+    setSearchBy: searchBy => dispatch(setSearchBy(searchBy)),
     resetSelectedMovie: () => dispatch(resetSelectedMovie()),
-    resetOffset: () => dispatch(resetOffset())
-  }
+    resetOffset: () => dispatch(resetOffset()),
+  };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);

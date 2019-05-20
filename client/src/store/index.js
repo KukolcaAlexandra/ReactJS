@@ -7,8 +7,8 @@ import rootReducer from '../reducers/index';
 
 const persistConfig = {
   key: 'root',
-  storage: storage,
-  stateReconciler: autoMergeLevel2 
+  storage,
+  stateReconciler: autoMergeLevel2,
 };
 
 const pReducer = persistReducer(persistConfig, rootReducer);

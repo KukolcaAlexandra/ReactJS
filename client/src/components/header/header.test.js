@@ -1,7 +1,6 @@
 import React from 'react';
+import { shallow, mount } from 'enzyme';
 import { Header } from './header.container';
-import {shallow, mount} from 'enzyme';
-import { Provider } from 'react-redux';
 
 describe('Header component', () => {
   let searchResult;
@@ -17,13 +16,13 @@ describe('Header component', () => {
   beforeEach(() => {
     searchResult = [];
     searchBy = 'TITLE';
-    selectedMovie={
-      'title': 'Fifty Shades Freed',
-      'tagline': `Don't miss the climax`,
-      'release_date': '2018-02-07',
-      'poster_path': 'https://image.tmdb.org/t/p/w500/3kcEGnYBHDeqmdYf8ZRbKdfmlUy.jpg',
-      'overview': 'Believing they have left behind shadowy figures from their past, newlyweds Christian and Ana fully embrace an inextricable connection and shared life of luxury. But just as she steps into her role as Mrs. Grey and he relaxes into an unfamiliar stability, new threats could jeopardize their happy ending before it even begins.',
-      'runtime': 100
+    selectedMovie = {
+      title: 'Fifty Shades Freed',
+      tagline: 'Don\'t miss the climax',
+      release_date: '2018-02-07',
+      poster_path: 'https://image.tmdb.org/t/p/w500/3kcEGnYBHDeqmdYf8ZRbKdfmlUy.jpg',
+      overview: 'Believing they have left behind shadowy figures from their past, newlyweds Christian and Ana fully embrace an inextricable connection and shared life of luxury. But just as she steps into her role as Mrs. Grey and he relaxes into an unfamiliar stability, new threats could jeopardize their happy ending before it even begins.',
+      runtime: 100,
     };
     searchValue = 'adv';
     loadMovies = jest.fn();
@@ -35,10 +34,10 @@ describe('Header component', () => {
 
   it('should be render correctly', () => {
     const component = shallow(
-      <Header/>
+      <Header/>,
     );
     expect(component).toMatchSnapshot();
-  });  
+  });
 
   it('should be onClickEnterButton call', () => {
     const component = mount(
@@ -52,19 +51,8 @@ describe('Header component', () => {
         setSearchBy={setSearchBy}
         resetSelectedMovie={resetSelectedMovie}
         resetOffset={resetOffset}
-      />);
-    const instance = component.instance();
-    const event = {
-      'keyCode': 13,
-    }
-    //const spy = jest.spyOn(instance, 'onClickEnterButton');
-    //instance.onClickEnterButton(event);
-    //console.log(instance);
-    //const spy = jest.spyOn(ErrorBoundary.prototype, 'componentDidCatch');
-    //instance.onClickSearchButton = jest.fn();
-    //instance.onClickEnterButton(event);
-    //const onClickEnterButton = jest.fn();
-    //expect(spy).toHaveBeenCalled();
+      />,
+    );
+    expect(component).toMatchSnapshot();
   });
-
-})
+});

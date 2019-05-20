@@ -1,9 +1,8 @@
 import React from 'react';
+import { shallow } from 'enzyme';
 import MainHeader from './mainHeader.component';
-import {shallow} from 'enzyme';
 
 describe('MainHeader component', () => {
-    
   it('should be render correctly', () => {
     const onInputChange = jest.fn();
     const onClickEnterButton = jest.fn();
@@ -18,8 +17,8 @@ describe('MainHeader component', () => {
         onClickSearchButton={onClickSearchButton}
         onClickFilterButton={onClickFilterButton}
         searchBy={searchBy}
-      />
+      />,
     );
     expect(component).toMatchSnapshot();
-  });    
-})
+  });
+});

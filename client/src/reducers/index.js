@@ -6,7 +6,7 @@ import selectedMovie from './selectedMovieReducer';
 const rootReducer = combineReducers({
   loadedMovies,
   searchParams,
-  selectedMovie
-})
+  selectedMovie,
+});
 
 export default rootReducer;

@@ -4,7 +4,7 @@ import SearchBar from '../searchBar/searchBar.component';
 import Input from '../../common/search/search.component';
 import styles from '../header.css';
 
-function MainHeader (props) {
+function MainHeader(props) {
   return (
     <div className={styles.header}>
       <h1>{'find your movie'.toUpperCase()}</h1>
@@ -21,7 +21,7 @@ function MainHeader (props) {
         onSearchButton={props.onSearchButton}
       />
     </div>
-  )
+  );
 }
 
 MainHeader.propTypes = {
@@ -31,6 +31,6 @@ MainHeader.propTypes = {
   onClickSearchByButton: PropTypes.func,
   searchBy: PropTypes.string,
   onSearchButton: PropTypes.func,
-}
+};
 
 export default MainHeader;

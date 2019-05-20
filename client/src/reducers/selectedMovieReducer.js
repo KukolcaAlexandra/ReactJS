@@ -1,25 +1,23 @@
 import { LOAD_MOVIE_BY_ID_SUCCESS, RESET_SELECTED_MOVIE } from '../actions/actionTypes';
 
 const initialState = {
-	data: null
-}
+  data: null,
+};
 
 export default function selectedMovieReducer(state = initialState, action) {
   switch (action.type) {
+    case LOAD_MOVIE_BY_ID_SUCCESS:
+      return {
+        data: action.payload,
+      };
 
-		case LOAD_MOVIE_BY_ID_SUCCESS:
-			return {
-				data: action.payload
-			}
+    case RESET_SELECTED_MOVIE:
+      return {
+        data: null,
+      };
 
-		case RESET_SELECTED_MOVIE:
-			return {
-				data: null
-			}
 
-		
-		default:
-			return state
+    default:
+      return state;
   }
 }
-  

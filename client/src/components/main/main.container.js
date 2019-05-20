@@ -5,15 +5,14 @@ import { withRouter } from 'react-router-dom';
 import MoviesList from './moviesList/moviesList.component';
 import { apiParams } from '../../consts';
 import SortBar from './sortBar/sortBar.component';
-import Button from '../../components/common/button/button.component';
+import Button from '../common/button/button.component';
 import { setSortBy } from '../../actions/searchActions';
 import { loadMovies, loadMovieById } from '../../actions/movieActions';
 import { loadMore } from '../../actions/loadMoreActions';
 import { increaseOffset } from '../../actions/offsetActions';
 import styles from './main.css';
 
-export class Main extends React.Component {
-  
+class Main extends React.Component {
   componentWillMount() {
     if (this.props.match.path === '/film/:id') {
       this.props.loadMovieById(this.props.match.params.id);
@@ -38,7 +37,7 @@ export class Main extends React.Component {
   render() {
     return (
       <div className={styles.container}>
-        
+
         <SortBar
           selectedMovie={this.props.selectedMovie}
           count={this.props.total}
@@ -50,7 +49,7 @@ export class Main extends React.Component {
           data={this.props.searchResult}
           onMovieClick={this.onMovieClick}
         />
-        
+
         {this.props.total > 0 && !this.props.selectedMovie && (
           <Button title="Load More" onClick={this.onClickLoadMore} size="loadMore"/>
         )}
@@ -72,26 +71,26 @@ Main.propTypes = {
   loadMore: PropTypes.func,
   match: PropTypes.object.isRequired,
   location: PropTypes.object.isRequired,
-  history: PropTypes.object.isRequired
-}
+  history: PropTypes.object.isRequired,
+};
 
 function mapStateToProps(state) {
-  return { 
+  return {
     searchResult: state.loadedMovies.moviesList,
     total: state.loadedMovies.total,
     sortBy: apiParams.getKeyByValue(state.searchParams.sortBy),
-    selectedMovie: state.selectedMovie.data
-  }
+    selectedMovie: state.selectedMovie.data,
+  };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    setSortBy: (sortBy) => dispatch(setSortBy(sortBy)),
+    setSortBy: sortBy => dispatch(setSortBy(sortBy)),
     loadMovies: () => dispatch(loadMovies()),
-    loadMovieById: (id) => dispatch(loadMovieById(id)),
+    loadMovieById: id => dispatch(loadMovieById(id)),
     increaseOffset: () => dispatch(increaseOffset()),
     loadMore: () => dispatch(loadMore()),
-  }
+  };
 }
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Main));

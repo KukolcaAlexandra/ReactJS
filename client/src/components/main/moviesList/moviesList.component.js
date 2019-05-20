@@ -7,19 +7,17 @@ import NoFilmFound from '../noFilmFound/noFilmFound.component';
 
 function MoviesList(props) {
   const { data, onMovieClick } = props;
-  const listItems = data.map((data) =>
-    <MovieBlock data={data} key={data.id} onMovieClick={onMovieClick}/>
-  );
+  const listItems = data.map(item => <MovieBlock data={item} key={item.id} onMovieClick={onMovieClick}/>);
 
   return (
     <ErrorBoundary>
       { !data || data.length <= 0 ? (
           <NoFilmFound />
-        ) : (
+      ) : (
           <div className={styles.main}>
             {listItems}
           </div>
-        )
+      )
       }
     </ErrorBoundary>
   );
@@ -27,7 +25,7 @@ function MoviesList(props) {
 
 MoviesList.propTypes = {
   data: PropTypes.array,
-  onMovieClick: PropTypes.func
-}
+  onMovieClick: PropTypes.func,
+};
 
 export default MoviesList;

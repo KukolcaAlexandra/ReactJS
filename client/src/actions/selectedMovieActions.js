@@ -1,5 +1,5 @@
-import { RESET_SELECTED_MOVIE}  from './actionTypes';
+import { RESET_SELECTED_MOVIE } from './actionTypes';
 
-export function resetSelectedMovie() {
-	return {type: RESET_SELECTED_MOVIE};
+export default function resetSelectedMovie() {
+  return { type: RESET_SELECTED_MOVIE };
 }

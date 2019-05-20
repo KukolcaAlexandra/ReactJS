@@ -1,11 +1,11 @@
 import React from 'react';
-import {releaseDate, rating} from '../../../consts';
+import { release_date, rating } from '../../../consts';
 import ErrorBoundary from '../../common/errorBoundary/errorBoundary.component';
 import styles from './sortBar.css';
 
 export default function SortBar(props) {
-  let selectedStyle = `${styles.item} ${styles.selected} ${styles.cursor}`;
-  let unselectedStyle = `${styles.item} ${styles.cursor}`;
+  const selectedStyle = `${styles.item} ${styles.selected} ${styles.cursor}`;
+  const unselectedStyle = `${styles.item} ${styles.cursor}`;
 
   const renderItem = (name, className, onClick) => {
     if (onClick) {
@@ -14,33 +14,35 @@ export default function SortBar(props) {
           className={className}
           onClick={onClick}
         >{name}</div>
-      )
-    } else {
-      return (
+      );
+    }
+    return (
         <div
           className={className}
         >{name}</div>
-      )
-    }
+    );
   };
 
   const renderGenreItem = () => (
-    <div  className={styles.item}>Films by {props.selectedMovie.genres && props.selectedMovie.genres[0]} genre</div>
+    <div className={styles.item}>Films by {props.selectedMovie.genres && props.selectedMovie.genres[0]} genre</div>
   );
 
   const sortFilter = () => (
     <>
       { renderItem(`${props.count} movies found`, styles.item) }
       { renderItem('Sort by', styles.item) }
-      { renderItem('release date', props.sortBy === releaseDate ? selectedStyle : unselectedStyle, props.onChangeSortBy) }
+      { renderItem('release date', props.sortBy === release_date ? selectedStyle : unselectedStyle, props.onChangeSortBy) }
       { renderItem('rating', props.sortBy === rating ? selectedStyle : unselectedStyle, props.onChangeSortBy) }
     </>
   );
 
+  console.log('props');
+  console.log(props);
   return (
     <ErrorBoundary>
       <div className={styles.sortBar}>
-        {props.count > 0 && (props.selectedMovie && renderGenreItem() || sortFilter())}
+        { props.count > 0
+          && ((props.selectedMovie && renderGenreItem()) || sortFilter())}
       </div>
     </ErrorBoundary>
   );
