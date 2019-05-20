@@ -1,0 +1,26 @@
+.sortBar {
+  height: 30px;
+  background-color: lightgray;
+  display: flex;
+  flex-direction: row;
+}
+
+.item {
+  margin: 5px 30px;
+}
+
+.item:first-child {
+  margin-right: auto;
+}
+
+.selected {
+  font-weight: 700;
+}
+
+.cursor {
+  cursor: pointer;
+}
+
+.container {
+  display: flex;
+}

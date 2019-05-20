@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SearchBar component should be render correctly with Genre 1`] = `ShallowWrapper {}`;
+
+exports[`SearchBar component should be render correctly with Title 1`] = `ShallowWrapper {}`;
