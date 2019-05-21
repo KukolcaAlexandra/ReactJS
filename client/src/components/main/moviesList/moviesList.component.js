@@ -1,11 +1,28 @@
+// @flow
+
 import React from 'react';
-import PropTypes from 'prop-types';
 import styles from './moviesList.css';
 import MovieBlock from './movieBlock/movieBlock.component';
 import ErrorBoundary from '../../common/errorBoundary/errorBoundary.component';
 import NoFilmFound from '../noFilmFound/noFilmFound.component';
 
-function MoviesList(props) {
+type Data = {
+  id: number,
+  release_date: string,
+  poster_path: string,
+  title: string,
+  tagline: string,
+  runtime: number,
+  overview: string,
+  genres: Array<string>,
+}
+
+type Props = {
+  data: Array<Data>,
+  onMovieClick: Function,
+}
+
+function MoviesList(props: Props) {
   const { data, onMovieClick } = props;
   const listItems = data.map(item => <MovieBlock data={item} key={item.id} onMovieClick={onMovieClick}/>);
 
@@ -22,10 +39,5 @@ function MoviesList(props) {
     </ErrorBoundary>
   );
 }
-
-MoviesList.propTypes = {
-  data: PropTypes.array,
-  onMovieClick: PropTypes.func,
-};
 
 export default MoviesList;

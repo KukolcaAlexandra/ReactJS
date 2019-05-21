@@ -1,10 +1,21 @@
+// @flow
+
 import React from 'react';
-import PropTypes from 'prop-types';
 import SearchBar from '../searchBar/searchBar.component';
 import Input from '../../common/search/search.component';
 import styles from '../header.css';
 
-function MainHeader(props) {
+type Props = {
+  onInputChange: Function,
+  onClickEnterButton: Function,
+  onClickSearchButton: Function,
+  onClickSearchByButton: Function,
+  searchBy: string,
+  onSearchButton: Function,
+  searchValue: string,
+};
+
+function MainHeader(props: Props) {
   return (
     <div className={styles.header}>
       <h1>{'find your movie'.toUpperCase()}</h1>
@@ -23,14 +34,5 @@ function MainHeader(props) {
     </div>
   );
 }
-
-MainHeader.propTypes = {
-  onInputChange: PropTypes.func,
-  onClickEnterButton: PropTypes.func,
-  onClickSearchButton: PropTypes.func,
-  onClickSearchByButton: PropTypes.func,
-  searchBy: PropTypes.string,
-  onSearchButton: PropTypes.func,
-};
 
 export default MainHeader;

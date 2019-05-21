@@ -1,10 +1,27 @@
+// @flow
+
 import React from 'react';
-import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import styles from '../header.css';
 import Button from '../../common/button/button.component';
 
-function DescriptionHeader(props) {
+type Data = {
+  id: number,
+  release_date: string,
+  poster_path: string,
+  title: string,
+  tagline: string,
+  runtime: number,
+  overview: string,
+  genres: Array<string>,
+}
+
+type Props = {
+  data: Data,
+  onClick: Function,
+};
+
+function DescriptionHeader(props: Props) {
   const releaseDate = props.data && new Date(props.data.release_date);
   return (
     <div className={styles.header}>
@@ -29,10 +46,5 @@ function DescriptionHeader(props) {
     </div>
   );
 }
-
-DescriptionHeader.propTypes = {
-  data: PropTypes.object,
-  onClick: PropTypes.func,
-};
 
 export default withRouter(DescriptionHeader);

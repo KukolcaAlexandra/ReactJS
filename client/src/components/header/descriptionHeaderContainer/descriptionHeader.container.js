@@ -1,5 +1,6 @@
+// @flow
+
 import React from 'react';
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import ErrorBoundary from '../../common/errorBoundary/errorBoundary.component';
@@ -7,7 +8,32 @@ import DescriptionHeader from '../descriptionHeader/descriptionHeader.component'
 import { loadMovies } from '../../../actions/movieActions';
 import resetSelectedMovie from '../../../actions/selectedMovieActions';
 
-class DescriptionHeaderContainer extends React.Component {
+type Data = {
+  id: number,
+  release_date: string,
+  poster_path: string,
+  title: string,
+  tagline: string,
+  runtime: number,
+  overview: string,
+  genres: Array<string>,
+}
+
+type SelectedMovie = {
+  data: Data,
+}
+
+type Props = {
+  selectedMovie: SelectedMovie,
+  match: Function,
+  location: any,
+  history: any,
+  loadMovies: Function,
+  resetSelectedMovie: Function,
+
+};
+
+class DescriptionHeaderContainer extends React.Component<Props> {
   onBackButton = () => {
     this.props.resetSelectedMovie();
     this.props.loadMovies();
@@ -30,13 +56,6 @@ class DescriptionHeaderContainer extends React.Component {
     );
   }
 }
-
-DescriptionHeaderContainer.propTypes = {
-  selectedMovie: PropTypes.object,
-  match: PropTypes.object.isRequired,
-  location: PropTypes.object.isRequired,
-  history: PropTypes.object.isRequired,
-};
 
 function mapStateToProps(state) {
   return {

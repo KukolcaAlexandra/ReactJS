@@ -1,10 +1,18 @@
+// @flow
+
 import React from 'react';
-import PropTypes from 'prop-types';
 import Button from '../../common/button/button.component';
 import { title, genre } from '../../../consts';
 import styles from './searchBar.css';
 
-function SearchBar(props) {
+type Props = {
+  onClickSearchButton: Function,
+  onClickSearchByButton: Function,
+  searchBy: string,
+  onSearchButton: Function,
+};
+
+function SearchBar(props: Props) {
   return (
     <div className={styles.filterBar}>
       <h2>{'search by'.toUpperCase()}</h2>
@@ -26,12 +34,5 @@ function SearchBar(props) {
     </div>
   );
 }
-
-SearchBar.propTypes = {
-  onClickSearchButton: PropTypes.func,
-  onClickSearchByButton: PropTypes.func,
-  searchBy: PropTypes.string,
-  onSearchButton: PropTypes.func,
-};
 
 export default SearchBar;

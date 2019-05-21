@@ -1,7 +1,16 @@
+// @flow
+
 import React from 'react';
 import styles from './button.css';
 
-export default function Button(props) {
+type Props = {
+  size: string,
+  pressed?: boolean,
+  title: string,
+  onClick: Function,
+};
+
+export default function Button(props: Props) {
   let className;
   let classPressed;
 

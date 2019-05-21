@@ -1,5 +1,6 @@
+// @flow
+
 import React from 'react';
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import ErrorBoundary from '../../common/errorBoundary/errorBoundary.component';
@@ -10,7 +11,31 @@ import { resetOffset } from '../../../actions/offsetActions';
 import resetSelectedMovie from '../../../actions/selectedMovieActions';
 import { setSearchValue, setSearchBy } from '../../../actions/searchActions';
 
-class MainHeaderContainer extends React.Component {
+type Data = {
+  id: number,
+  release_date: string,
+  poster_path: string,
+  title: string,
+  tagline: string,
+  runtime: number,
+  overview: string,
+  genres: Array<string>,
+}
+
+type Props = {
+  searchResult: Array<Data>,
+  searchBy: string,
+  searchValue: string,
+  loadMovies: Function,
+  setSearchValue: Function,
+  setSearchBy: Function,
+  resetOffset: Function,
+  match: any,
+  location: any,
+  history: any,
+};
+
+class MainHeaderContainer extends React.Component<Props> {
   componentDidMount() {
     if (this.props.match.path === '/') {
       this.props.setSearchValue('');
@@ -59,19 +84,6 @@ class MainHeaderContainer extends React.Component {
     );
   }
 }
-
-MainHeaderContainer.propTypes = {
-  searchResult: PropTypes.array,
-  searchBy: PropTypes.string,
-  searchValue: PropTypes.string,
-  loadMovies: PropTypes.func,
-  setSearchValue: PropTypes.func,
-  setSearchBy: PropTypes.func,
-  resetOffset: PropTypes.func,
-  match: PropTypes.object.isRequired,
-  location: PropTypes.object.isRequired,
-  history: PropTypes.object.isRequired,
-};
 
 function mapStateToProps(state) {
   return {

@@ -1,6 +1,15 @@
+// @flow
+
 import React from 'react';
 
-class Input extends React.Component {
+type Props = {
+  placeholder: string,
+  value: string,
+  onChangeHandler: Function,
+  onClickHandler: Function,
+};
+
+class Input extends React.Component<Props> {
   render() {
     return (
       <input

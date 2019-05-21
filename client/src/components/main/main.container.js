@@ -1,5 +1,6 @@
+// @flow
+
 import React from 'react';
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import MoviesList from './moviesList/moviesList.component';
@@ -12,7 +13,33 @@ import { loadMore } from '../../actions/loadMoreActions';
 import { increaseOffset } from '../../actions/offsetActions';
 import styles from './main.css';
 
-class Main extends React.Component {
+type Data = {
+  id: number,
+  release_date: string,
+  poster_path: string,
+  title: string,
+  tagline: string,
+  runtime: number,
+  overview: string,
+  genres: Array<string>,
+}
+
+type Props = {
+  searchResult: Array<Data>,
+  total: number,
+  sortBy: string,
+  selectedMovie: Data,
+  setSortBy: Function,
+  loadMovies: Function,
+  loadMovieById: Function,
+  increaseOffset: Function,
+  loadMore: Function,
+  match: any,
+  location: any,
+  history: any,
+};
+
+class Main extends React.Component<Props> {
   componentWillMount() {
     if (this.props.match.path === '/film/:id') {
       this.props.loadMovieById(this.props.match.params.id);
@@ -58,21 +85,6 @@ class Main extends React.Component {
     );
   }
 }
-
-Main.propTypes = {
-  searchResult: PropTypes.array,
-  total: PropTypes.number,
-  sortBy: PropTypes.string,
-  selectedMovie: PropTypes.object,
-  setSortBy: PropTypes.func,
-  loadMovies: PropTypes.func,
-  loadMovieById: PropTypes.func,
-  increaseOffset: PropTypes.func,
-  loadMore: PropTypes.func,
-  match: PropTypes.object.isRequired,
-  location: PropTypes.object.isRequired,
-  history: PropTypes.object.isRequired,
-};
 
 function mapStateToProps(state) {
   return {
