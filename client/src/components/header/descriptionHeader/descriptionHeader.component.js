@@ -30,7 +30,9 @@ function DescriptionHeader(props: Props) {
         <Button
           title='SEARCH'
           onClick={props.onClick}
-          size='medium'/>
+          size='medium'>
+          SEARCH
+        </Button>
       </div>
       <div className={styles.container}>
         <img className={styles.image} src={props.data && props.data.poster_path}/>

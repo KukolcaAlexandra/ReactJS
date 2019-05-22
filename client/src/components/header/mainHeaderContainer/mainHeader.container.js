@@ -57,7 +57,7 @@ class MainHeaderContainer extends React.Component<Props> {
   }
 
   onClickSearchByButton = (event) => {
-    this.props.setSearchBy(event.target.value);
+    this.props.setSearchBy(event.target.innerText);
   }
 
   onClickSearchButton = () => {

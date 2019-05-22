@@ -97,6 +97,7 @@
     "redux": "^4.0.1",
     "redux-persist": "^5.10.0",
     "redux-thunk": "^2.3.0",
-    "storybook-react-demo": "^1.1.0"
+    "storybook-react-demo": "^1.1.0",
+    "styled-components": "^4.2.0"
   }
 }

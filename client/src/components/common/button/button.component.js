@@ -1,40 +1,48 @@
 // @flow
 
 import React from 'react';
-import styles from './button.css';
+import styled from 'styled-components';
 
-type Props = {
-  size: string,
-  pressed?: boolean,
-  title: string,
-  onClick: Function,
-};
+const Button = styled.button`
+  color: white;
+  border-radius: 5px;
+  border: none;
+  margin-left: 10px;
+  text-decoration: none;
+  cursor: pointer;
+  transition-duration: 0.4s;
 
-export default function Button(props: Props) {
-  let className;
-  let classPressed;
+  ${props => props.size === 'big' && `
+    background-color:#ffcccc;
+    width: 150px;
+    height: 30px;
+    margin-left: auto;
+  `}
 
-  if (props.size === 'small') {
-    className = styles.small;
-  } else if (props.size === 'medium') {
-    className = styles.medium;
-  } else if (props.size === 'big') {
-    className = styles.big;
-  } else if (props.size === 'loadMore') {
-    className = styles.loadMore;
+  ${props => props.size === 'medium' && `
+    background-color: lightgray;
+    width: 120px;
+    height: 25px;
+  `}
+
+  ${props => props.size === 'small' && `
+    background-color: grey;
+    width: 80px;
+    height: 20px;
+  `}
+
+  &:hover {
+    box-shadow: 10px;
+    background-color: #ffb3b3;
   }
 
-  if (props.pressed) {
-    classPressed = styles.pressed;
+  &:focus {
+    outline: 0;
   }
 
-  return (
-      <input
-        className={[className, styles.button, classPressed].join(' ')}
-        type="button"
-        name="button"
-        value={props.title}
-        onClick={props.onClick}
-      />
-  );
-}
+  ${props => props.pressed && `
+    background-color: #ffb3b3;
+  `}
+`;
+
+export default Button;
