@@ -14,6 +14,7 @@ type Data = {
   runtime: number,
   overview: string,
   genres: Array<string>,
+  vote_average: number,
 }
 
 type Props = {

@@ -11,7 +11,8 @@
     "build": "webpack --config webpack.prod.js --progress",
     "start": "webpack-dev-server --open --config webpack.dev.js --progress",
     "eslint": "eslint ./ --cache --ignore-pattern .gitignore --fix",
-    "flow": "flow"
+    "flow": "flow",
+    "storybook": "start-storybook"
   },
   "jest": {
     "testPathIgnorePatterns": [
@@ -40,6 +41,7 @@
     "@babel/plugin-proposal-class-properties": "^7.4.0",
     "@babel/preset-env": "^7.4.2",
     "@babel/preset-react": "^7.0.0",
+    "@storybook/react": "^5.0.11",
     "autoprefixer": "^9.5.0",
     "babel-cli": "^6.26.0",
     "babel-eslint": "^10.0.1",
@@ -83,6 +85,9 @@
   "dependencies": {
     "@babel/plugin-syntax-throw-expressions": "^7.2.0",
     "@babel/preset-flow": "^7.0.0",
+    "@storybook/addon-actions": "^5.0.11",
+    "@storybook/addon-info": "^5.0.11",
+    "@storybook/addon-links": "^5.0.11",
     "cypress": "^3.2.0",
     "expect": "^24.8.0",
     "prop-types": "^15.7.2",
@@ -91,6 +96,7 @@
     "react-router-dom": "^5.0.0",
     "redux": "^4.0.1",
     "redux-persist": "^5.10.0",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "storybook-react-demo": "^1.1.0"
   }
 }
