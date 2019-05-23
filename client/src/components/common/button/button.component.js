@@ -31,6 +31,13 @@ const Button = styled.button`
     height: 20px;
   `}
 
+  ${props => props.size === 'loadMore' && `
+    background-color: lightgray;
+    width: 80%;
+    height: 30px;
+    margin: auto auto 10px auto;
+  `}
+
   &:hover {
     box-shadow: 10px;
     background-color: #ffb3b3;

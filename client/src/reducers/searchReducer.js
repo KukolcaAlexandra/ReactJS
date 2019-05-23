@@ -1,11 +1,12 @@
+import { fromJS } from 'immutable';
 import { SET_SEARCH_VALUE, SET_SEARCH_BY, SET_SORT_BY } from '../actions/actionTypes';
 import { title, releaseDate, apiParams } from '../consts';
 
-const initialState = {
+const initialState = fromJS({
   searchValue: '',
   searchBy: title,
   sortBy: apiParams[releaseDate],
-};
+});
 
 export default function searchReducer(state = initialState, action) {
   switch (action.type) {

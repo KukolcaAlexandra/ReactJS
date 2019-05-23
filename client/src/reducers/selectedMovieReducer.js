@@ -1,8 +1,9 @@
+import { fromJS } from 'immutable';
 import { LOAD_MOVIE_BY_ID_SUCCESS, RESET_SELECTED_MOVIE } from '../actions/actionTypes';
 
-const initialState = {
+const initialState = fromJS({
   data: null,
-};
+});
 
 export default function selectedMovieReducer(state = initialState, action) {
   switch (action.type) {
