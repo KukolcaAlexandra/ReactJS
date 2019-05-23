@@ -24,7 +24,7 @@ type Data = {
 }
 
 type Props = {
-  searchResult: List<Data>,
+  searchResult: Array<Data>,
   searchBy: string,
   searchValue: string,
   loadMovies: Function,

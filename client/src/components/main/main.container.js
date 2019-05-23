@@ -3,7 +3,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { createSelector, createStructuredSelector } from 'reselect';
 import MoviesList from './moviesList/moviesList.component';
 import { apiParams } from '../../consts';
 import SortBar from './sortBar/sortBar.component';
@@ -13,7 +12,7 @@ import { loadMovies, loadMovieById } from '../../actions/movieActions';
 import { loadMore } from '../../actions/loadMoreActions';
 import { increaseOffset } from '../../actions/offsetActions';
 import styles from './main.css';
-import { moviesListSelector } from '../../selectors';
+import moviesListSelector from '../../selectors';
 
 type Data = {
   id: number,
