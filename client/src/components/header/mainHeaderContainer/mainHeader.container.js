@@ -6,10 +6,10 @@ import { withRouter } from 'react-router-dom';
 import ErrorBoundary from '../../common/errorBoundary/errorBoundary.component';
 import MainHeader from '../mainHeader/mainHeader.component';
 import { apiParams } from '../../../consts';
-import { loadMovies } from '../../../actions/movieActions';
-import { resetOffset } from '../../../actions/offsetActions';
-import resetSelectedMovie from '../../../actions/selectedMovieActions';
-import { setSearchValue, setSearchBy } from '../../../actions/searchActions';
+import { loadMovies } from '../../../store/actions/movieActions';
+import { resetOffset } from '../../../store/actions/offsetActions';
+import resetSelectedMovie from '../../../store/actions/selectedMovieActions';
+import { setSearchValue, setSearchBy } from '../../../store/actions/searchActions';
 
 type Data = {
   id: number,

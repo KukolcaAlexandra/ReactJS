@@ -1,5 +1,5 @@
 import { LOAD_MORE_SUCCESS } from './actionTypes';
-import { getMovies } from '../api/api-requests';
+import { getMovies } from '../../api/api-requests';
 
 export function loadMoreSuccess(movies) {
   return { type: LOAD_MORE_SUCCESS, payload: movies };

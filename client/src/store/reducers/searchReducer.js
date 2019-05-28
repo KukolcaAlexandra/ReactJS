@@ -1,6 +1,6 @@
 import { fromJS } from 'immutable';
 import { SET_SEARCH_VALUE, SET_SEARCH_BY, SET_SORT_BY } from '../actions/actionTypes';
-import { title, releaseDate, apiParams } from '../consts';
+import { title, releaseDate, apiParams } from '../../consts';
 
 const initialState = fromJS({
   searchValue: '',

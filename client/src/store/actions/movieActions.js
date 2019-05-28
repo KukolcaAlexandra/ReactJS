@@ -1,11 +1,11 @@
-import { getMovies, getMovieById } from '../api/api-requests';
+import { getMovies, getMovieById } from '../../api/api-requests';
 import {
   LOAD_MOVIES_SUCCESS,
   LOAD_MOVIES_ERROR,
   LOAD_MOVIE_BY_ID_SUCCESS,
 } from './actionTypes';
 import { resetOffset } from './offsetActions';
-import { genre, apiParams } from '../consts';
+import { genre, apiParams } from '../../consts';
 
 export function loadMoviesSuccess(movies) {
   return { type: LOAD_MOVIES_SUCCESS, payload: movies };

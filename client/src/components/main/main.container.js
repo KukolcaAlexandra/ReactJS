@@ -7,10 +7,10 @@ import MoviesList from './moviesList/moviesList.component';
 import { apiParams } from '../../consts';
 import SortBar from './sortBar/sortBar.component';
 import Button from '../common/button/button.component';
-import { setSortBy } from '../../actions/searchActions';
-import { loadMovies, loadMovieById } from '../../actions/movieActions';
-import { loadMore } from '../../actions/loadMoreActions';
-import { increaseOffset } from '../../actions/offsetActions';
+import { setSortBy } from '../../store/actions/searchActions';
+import { loadMovies, loadMovieById } from '../../store/actions/movieActions';
+import { loadMore } from '../../store/actions/loadMoreActions';
+import { increaseOffset } from '../../store/actions/offsetActions';
 import styles from './main.css';
 import moviesListSelector from '../../selectors';
 

@@ -5,7 +5,7 @@ const getMoviesList = state => state.loadedMovies.moviesList;
 
 // reselect function
 const moviesListSelector = createSelector(
-  [getMoviesList],
+  getMoviesList,
   movieslist => movieslist,
 );
 

@@ -5,8 +5,8 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import ErrorBoundary from '../../common/errorBoundary/errorBoundary.component';
 import DescriptionHeader from '../descriptionHeader/descriptionHeader.component';
-import { loadMovies } from '../../../actions/movieActions';
-import resetSelectedMovie from '../../../actions/selectedMovieActions';
+import { loadMovies } from '../../../store/actions/movieActions';
+import resetSelectedMovie from '../../../store/actions/selectedMovieActions';
 
 type Data = {
   id: number,

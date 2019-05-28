@@ -1,5 +1,5 @@
 import { SET_SEARCH_VALUE, SET_SEARCH_BY, SET_SORT_BY } from './actionTypes';
-import { apiParams } from '../consts';
+import { apiParams } from '../../consts';
 
 export function setSearchValue(searchValue) {
   return {
