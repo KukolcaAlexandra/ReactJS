@@ -1,19 +1,47 @@
+// @flow
+
 import React from 'react';
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import MoviesList from './moviesList/moviesList.component';
 import { apiParams } from '../../consts';
 import SortBar from './sortBar/sortBar.component';
-import Button from '../../components/common/button/button.component';
-import { setSortBy } from '../../actions/searchActions';
-import { loadMovies, loadMovieById } from '../../actions/movieActions';
-import { loadMore } from '../../actions/loadMoreActions';
-import { increaseOffset } from '../../actions/offsetActions';
+import Button from '../common/button/button.component';
+import { setSortBy } from '../../store/actions/searchActions';
+import { loadMovies, loadMovieById } from '../../store/actions/movieActions';
+import { loadMore } from '../../store/actions/loadMoreActions';
+import { increaseOffset } from '../../store/actions/offsetActions';
 import styles from './main.css';
+import moviesListSelector from '../../selectors';
 
-export class Main extends React.Component {
-  
+type Data = {
+  id: number,
+  release_date: string,
+  poster_path: string,
+  title: string,
+  tagline: string,
+  runtime: number,
+  overview: string,
+  genres: Array<string>,
+  vote_average: number,
+}
+
+type Props = {
+  searchResult: Array<Data>,
+  total: number,
+  sortBy: string,
+  selectedMovie: Data,
+  setSortBy: Function,
+  loadMovies: Function,
+  loadMovieById: Function,
+  increaseOffset: Function,
+  loadMore: Function,
+  match: any,
+  location: any,
+  history: any,
+};
+
+class Main extends React.Component<Props> {
   componentWillMount() {
     if (this.props.match.path === '/film/:id') {
       this.props.loadMovieById(this.props.match.params.id);
@@ -38,7 +66,7 @@ export class Main extends React.Component {
   render() {
     return (
       <div className={styles.container}>
-        
+
         <SortBar
           selectedMovie={this.props.selectedMovie}
           count={this.props.total}
@@ -50,9 +78,11 @@ export class Main extends React.Component {
           data={this.props.searchResult}
           onMovieClick={this.onMovieClick}
         />
-        
+
         {this.props.total > 0 && !this.props.selectedMovie && (
-          <Button title="Load More" onClick={this.onClickLoadMore} size="loadMore"/>
+          <Button title="Load More" onClick={this.onClickLoadMore} size="loadMore">
+            Load More
+          </Button>
         )}
 
       </div>
@@ -60,38 +90,23 @@ export class Main extends React.Component {
   }
 }
 
-Main.propTypes = {
-  searchResult: PropTypes.array,
-  total: PropTypes.number,
-  sortBy: PropTypes.string,
-  selectedMovie: PropTypes.object,
-  setSortBy: PropTypes.func,
-  loadMovies: PropTypes.func,
-  loadMovieById: PropTypes.func,
-  increaseOffset: PropTypes.func,
-  loadMore: PropTypes.func,
-  match: PropTypes.object.isRequired,
-  location: PropTypes.object.isRequired,
-  history: PropTypes.object.isRequired
-}
-
 function mapStateToProps(state) {
-  return { 
-    searchResult: state.loadedMovies.moviesList,
+  return {
+    searchResult: moviesListSelector(state),
     total: state.loadedMovies.total,
     sortBy: apiParams.getKeyByValue(state.searchParams.sortBy),
-    selectedMovie: state.selectedMovie.data
-  }
+    selectedMovie: state.selectedMovie.data,
+  };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    setSortBy: (sortBy) => dispatch(setSortBy(sortBy)),
+    setSortBy: sortBy => dispatch(setSortBy(sortBy)),
     loadMovies: () => dispatch(loadMovies()),
-    loadMovieById: (id) => dispatch(loadMovieById(id)),
+    loadMovieById: id => dispatch(loadMovieById(id)),
     increaseOffset: () => dispatch(increaseOffset()),
     loadMore: () => dispatch(loadMore()),
-  }
+  };
 }
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Main));

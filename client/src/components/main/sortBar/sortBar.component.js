@@ -1,11 +1,31 @@
+// @flow
+
 import React from 'react';
-import {releaseDate, rating} from '../../../consts';
+import { releaseDate, rating } from '../../../consts';
 import ErrorBoundary from '../../common/errorBoundary/errorBoundary.component';
 import styles from './sortBar.css';
 
-export default function SortBar(props) {
-  let selectedStyle = `${styles.item} ${styles.selected} ${styles.cursor}`;
-  let unselectedStyle = `${styles.item} ${styles.cursor}`;
+type Data = {
+  id: number,
+  release_date: string,
+  poster_path: string,
+  title: string,
+  tagline: string,
+  runtime: number,
+  overview: string,
+  genres: Array<string>,
+  vote_average: number,
+}
+
+type Props = {
+  selectedMovie: Data,
+  count: number,
+  sortBy: string,
+  onChangeSortBy: Function,
+}
+export default function SortBar(props: Props) {
+  const selectedStyle = `${styles.item} ${styles.selected} ${styles.cursor}`;
+  const unselectedStyle = `${styles.item} ${styles.cursor}`;
 
   const renderItem = (name, className, onClick) => {
     if (onClick) {
@@ -14,18 +34,17 @@ export default function SortBar(props) {
           className={className}
           onClick={onClick}
         >{name}</div>
-      )
-    } else {
-      return (
+      );
+    }
+    return (
         <div
           className={className}
         >{name}</div>
-      )
-    }
+    );
   };
 
   const renderGenreItem = () => (
-    <div  className={styles.item}>Films by {props.selectedMovie.genres && props.selectedMovie.genres[0]} genre</div>
+    <div className={styles.item}>Films by {props.selectedMovie.genres && props.selectedMovie.genres[0]} genre</div>
   );
 
   const sortFilter = () => (
@@ -40,7 +59,8 @@ export default function SortBar(props) {
   return (
     <ErrorBoundary>
       <div className={styles.sortBar}>
-        {props.count > 0 && (props.selectedMovie && renderGenreItem() || sortFilter())}
+        { props.count > 0
+          && ((props.selectedMovie && renderGenreItem()) || sortFilter())}
       </div>
     </ErrorBoundary>
   );

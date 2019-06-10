@@ -1,0 +1,30 @@
+{
+  "parser": "babel-eslint",
+  "rules": {
+    "max-len": [1, 120, 2, {"ignoreComments": true }], 
+    "react/prop-types": ["warn"],
+    "import/no-extraneous-dependencies": ["error", {"devDependencies": true }],
+    "react/jsx-uses-react": "error",   
+    "react/jsx-uses-vars": "error",
+    "class-methods-use-this": [
+      "error",
+      { 
+        "exceptMethods": [
+          "render",
+          "componentDidCatch"
+        ] 
+      }
+    ]
+  },
+  "extends": [
+    "airbnb-base"
+  ],
+  "plugins": [
+    "cypress",
+    "react"
+  ],
+  "env": {
+    "jest": true,
+    "cypress/globals": true
+  }
+}

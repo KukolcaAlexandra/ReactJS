@@ -1,9 +1,8 @@
 import React from 'react';
+import { shallow } from 'enzyme';
 import SearchBar from './searchBar.component';
-import {shallow} from 'enzyme';
 
 describe('SearchBar component', () => {
-    
   it('should be render correctly with Title', () => {
     const onClickSearchButton = jest.fn();
     const onClickFilterButton = jest.fn();
@@ -14,11 +13,11 @@ describe('SearchBar component', () => {
         onClickSearchButton={onClickSearchButton}
         onClickFilterButton={onClickFilterButton}
         searchBy={searchBy}
-      />
+      />,
     );
     expect(component).toMatchSnapshot();
-  });  
-  
+  });
+
   it('should be render correctly with Genre', () => {
     const onClickSearchButton = jest.fn();
     const onClickFilterButton = jest.fn();
@@ -29,9 +28,8 @@ describe('SearchBar component', () => {
         onClickSearchButton={onClickSearchButton}
         onClickFilterButton={onClickFilterButton}
         searchBy={searchBy}
-      />
+      />,
     );
     expect(component).toMatchSnapshot();
-  });  
-  
-})
+  });
+});

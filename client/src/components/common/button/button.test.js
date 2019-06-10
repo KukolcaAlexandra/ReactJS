@@ -1,9 +1,8 @@
 import React from 'react';
+import { shallow } from 'enzyme';
 import Button from './button.component';
-import {shallow} from 'enzyme';
 
 describe('Button component', () => {
-    
   it('big button should be render correctly', () => {
     const onClick = jest.fn();
     const component = shallow(<Button title="Search" onClick={onClick} size='big'/>);
@@ -27,5 +26,4 @@ describe('Button component', () => {
     const component = shallow(<Button title="Search" onClick={onClick} size='small' pressed={true}/>);
     expect(component).toMatchSnapshot();
   });
-
-})
+});

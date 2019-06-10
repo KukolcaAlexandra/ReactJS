@@ -7,7 +7,7 @@ export const apiParams = {
   [genre]: 'genres',
   [releaseDate]: 'release_date',
   [rating]: 'vote_average',
-}
+};
 apiParams.getKeyByValue = function (value) {
   return Object.keys(this).find(key => this[key] === value);
-}
+};

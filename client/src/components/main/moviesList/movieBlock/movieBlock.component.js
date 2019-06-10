@@ -1,13 +1,30 @@
+// @flow
+
 import React from 'react';
-import PropTypes from 'prop-types';
 import styles from './movieBlock.css';
 
-function MovieBlock(props) {
+type Data = {
+  id: number,
+  release_date: string,
+  poster_path: string,
+  title: string,
+  tagline: string,
+  runtime: number,
+  overview: string,
+  genres: Array<string>,
+  vote_average: number,
+}
 
+type Props = {
+  data: Data,
+  onMovieClick: Function,
+};
+
+function MovieBlock(props: Props) {
   const date = new Date(props.data.release_date);
 
   return (
-    <div className={styles.container} onClick={()=>props.onMovieClick(props.data.id)}>
+    <div className={styles.container} onClick={() => props.onMovieClick(props.data.id)}>
       <img className={styles.image} src={props.data.poster_path}/>
       <div className={styles.titleBlock}>
         <h3>{props.data.title}</h3>
@@ -21,11 +38,6 @@ function MovieBlock(props) {
       </div>
     </div>
   );
-}
-
-MovieBlock.propTypes = {
-  data: PropTypes.object,
-  onMovieClick: PropTypes.func
 }
 
 export default MovieBlock;

@@ -1,32 +1,31 @@
 import React from 'react';
+import { shallow } from 'enzyme';
 import App from './app';
-import {shallow} from 'enzyme';
 
 describe('App component', () => {
-    
   it('should be render correctly', () => {
     const component = shallow(<App />);
     expect(component).toMatchSnapshot();
   });
 
-  /*it('should set state "searchResult" after onClickSearchButton', () => {
+  /* it('should set state "searchResult" after onClickSearchButton', () => {
     const component = shallow(<App/>);
     const searchValue = 'last';
     const searchBy = 'TITLE';
     const instance = component.instance();
     instance.onClickSearchButton(searchValue, searchBy);
     expect(component.state('searchResult').length).toBe(1);
-  });*/
+  }); */
 
-  /*it('should set state "searchResult" to [] for empty searchValue after onClickSearchButton', () => {
+  /* it('should set state "searchResult" to [] for empty searchValue after onClickSearchButton', () => {
     const component = shallow(<App/>);
     const searchValue = '';
     const instance = component.instance();
     instance.onClickSearchButton(searchValue);
     expect(component.state('searchResult').length).toBe(0);
-  });*/
+  }); */
 
-  /*it('should set state "searchBy" to genre after onClickFilterButton', () => {
+  /* it('should set state "searchBy" to genre after onClickFilterButton', () => {
     const component = shallow(
       <App/>
     );
@@ -38,9 +37,9 @@ describe('App component', () => {
     }
     instance.onClickFilterButton(event);
     expect(component.state('searchBy')).toBe('genre');
-  });*/
+  }); */
 
-  /*it('should set state "selectedMovie" after onMovieClick', () => {
+  /* it('should set state "selectedMovie" after onMovieClick', () => {
     const data={
       'id': 123,
       'title': 'Fifty Shades Freed',
@@ -59,9 +58,9 @@ describe('App component', () => {
     const instance = component.instance();
     instance.onMovieClick(data);
     expect(component.state('selectedMovie')).toEqual(data);
-  });*/
-    
-  /*it('should clear state after onBackButton', () => {
+  }); */
+
+  /* it('should clear state after onBackButton', () => {
     const component = shallow(
       <App/>
     );
@@ -69,5 +68,5 @@ describe('App component', () => {
     instance.onBackButton();
     expect(component.state('searchResult').length).toBe(0);
     expect(component.state('selectedMovie')).toBeNull();
-  });*/
-})
+  }); */
+});
